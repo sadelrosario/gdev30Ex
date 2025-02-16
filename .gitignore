@@ -1,0 +1,6 @@
+.DS_Store
+include/
+lib-mingw-w64/
+lib-universal/
+src/
+
