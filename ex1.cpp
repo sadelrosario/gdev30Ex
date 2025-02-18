@@ -18,22 +18,255 @@
 #include <gdev.h>
 
 // change this to your desired window attributes
-#define WINDOW_WIDTH  640
-#define WINDOW_HEIGHT 360
-#define WINDOW_TITLE  "Hello Triangle"
+#define WINDOW_WIDTH  1000
+#define WINDOW_HEIGHT 1000
+#define WINDOW_TITLE  "Hello Cloud Strife"
 GLFWwindow *pWindow;
 
 // define a vertex array to hold our vertices
 float vertices[] =
 {
-    -0.40f, -0.50f,  0.00f,
-     0.40f, -0.50f,  0.00f,
-     0.00f,  0.50f,  0.00f
+    // -0.40f, -0.50f,  0.00f, 0.00f, 0.00f, 0.00f,
+    //  0.40f, -0.50f,  0.00f, 0.00f, 0.00f, 0.00f,
+    //  0.00f,  0.50f,  0.00f, 1.00f, 1.00f, 1.00f
+
+    // hair (back)
+    0.362f, -0.006f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.281f, -0.227f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.573f, -0.272f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.382f, 0.025f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.324f, -0.050f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.554f, -0.119f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.337f, -0.216f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.236f, -0.271f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.391f, -0.381f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    // body
+    -0.094f, -0.423f, 0.00f, 0.87f, 0.71f, 0.61f,
+    -0.090f, -0.630f, 0.00f, 0.87f, 0.71f, 0.61f,
+    0.129f, -0.401f, 0.00f, 0.87f, 0.71f, 0.61f,
+
+    -0.091f, -0.624f, 0.00f, 0.87f, 0.71f, 0.61f,
+    0.117f, -0.634f, 0.00f, 0.87f, 0.71f, 0.61f,
+    0.119f, -0.404f, 0.00f, 0.87f, 0.71f, 0.61f,
+
+    -0.104f, -0.516f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.106f, -0.634f, 0.00f, 0.33f, 0.32f, 0.36f,
+    0.130f, -0.518f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    -0.104f, -0.628f, 0.00f, 0.33f, 0.32f, 0.36f,
+    0.126f, -0.634f, 0.00f, 0.33f, 0.32f, 0.36f,
+    0.130f, -0.518f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    -0.440f, -0.600f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.412f, -0.931f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.256f, -0.629f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    -0.777f, -0.925f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.396f, -0.931f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.440f, -0.600f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    0.317f, -0.627f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.305f, -0.905f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.642f, -0.918f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    -0.275f, -0.623f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.418f, -0.942f, 0.00f, 0.33f, 0.32f, 0.36f,
+    0.321f, -0.628f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    -0.416f, -0.937f, 0.00f, 0.33f, 0.32f, 0.36f,
+    0.383f, -0.919f, 0.00f, 0.33f, 0.32f, 0.36f,
+    0.315f, -0.629f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    0.216f, -0.613f, 0.00, 0.61f, 0.62f, 0.66f,
+    0.644f, -0.929f, 0.00, 0.61f, 0.62f, 0.66f,
+    0.445f, -0.469f, 0.00, 0.61f, 0.62f, 0.66f,
+
+    0.445f, -0.469f, 0.00, 0.61f, 0.62f, 0.66f,
+    0.644f, -0.929f, 0.00, 0.61f, 0.62f, 0.66f,
+    0.705f, -0.668f, 0.00, 0.61f, 0.62f, 0.66f,
+
+
+    // face
+    0.002f, -0.533f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.002f, -0.093f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.150f, -0.413f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    -0.146f, -0.416f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.003f, -0.098f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.263f, -0.302f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    -0.260f, -0.304, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.006f, -0.105f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.291, 0.065f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    0.004f, -0.106f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.180f, 0.207f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.290f, 0.062f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    -0.392, -0.172f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.275, -0.081f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.336f, -0.050f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    -0.248f, -0.295f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.278f, -0.080f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.391, -0.172f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    0.002f, -0.533f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.153f, -0.413f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.002f, -0.093f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    0.150f, -0.416f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.267f, -0.302f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.002f, -0.098f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    0.265f, -0.306f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.295f, 0.065, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.000f, -0.105f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    0.000f, -0.105f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.294f, 0.062f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.186f, 0.206f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    0.280f, -0.081f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.397, -0.173f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.341, -0.050f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    0.253f, -0.296f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.396f, -0.172f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.283f, -0.080f, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    0.003f, -0.113f, 0.00f, 0.99f, 0.89f, 0.76f,
+    0.190f, 0.200f, 0.00f, 0.99f, 0.89f, 0.76f,
+    -0.182f, 0.203d, 0.00f, 0.99f, 0.89f, 0.76f,
+
+    // mouth
+    -0.056, -0.367f, 0.00f, 0.87f, 0.71f, 0.61f,
+    0.076, -0.368f, 0.00f, 0.87f, 0.71f, 0.61f,
+    0.011, -0.357f, 0.00f, 0.87f, 0.71f, 0.61f,
+
+    // nose
+    0.005f, -0.289f, 0.00f, 0.87f, 0.71f, 0.61f,
+    0.040f, -0.244f, 0.00f, 0.87f, 0.71f, 0.61f,
+    0.005f, -0.176f, 0.00f, 0.87f, 0.71f, 0.61f,
+
+    // left eye (from viewer pov) - whites
+    -0.209f, -0.076f, 0.00f, 1.00f, 1.00f, 1.00f,
+    -0.075f, -0.160f, 0.00f, 1.00f, 1.00f, 1.00f,
+    -0.101f, -0.091f, 0.00f, 1.00f, 1.00f, 1.00f,
+
+    -0.199f, -0.155f, 0.00f, 1.00f, 1.00f, 1.00f,
+    -0.076f, -0.159f, 0.00f, 1.00f, 1.00f, 1.00f,
+    -0.204f, -0.072f, 0.00f, 1.00f, 1.00f, 1.00f,
+
+    -0.199f, -0.154f, 0.00f, 1.00f, 1.00f, 1.00f,
+    -0.198f, -0.072f, 0.00f, 1.00f, 1.00f, 1.00f,
+    -0.253f, -0.085f, 0.00f, 1.00f, 1.00f, 1.00f,
+
+    // iris
+    -0.114f, -0.159f, 0.00f, 0.56f, 0.81f, 0.92f,
+    -0.115f, -0.089f, 0.00f, 0.56f, 0.81f, 0.92f,
+    -0.154f, -0.080f, 0.00f, 0.56f, 0.81f, 0.92f,
+
+    -0.174f, -0.158f, 0.00f, 0.56f, 0.81f, 0.92f,
+    -0.114f, -0.159f, 0.00f, 0.56f, 0.81f, 0.92f,
+    -0.175f, -0.099f, 0.00f, 0.56f, 0.81f, 0.92f,
+
+    -0.175f, -0.101f, 0.00f, 0.56f, 0.81f, 0.92f,
+    -0.114f, -0.160f, 0.00f, 0.56f, 0.81f, 0.92f,
+    -0.124f, -0.093f, 0.00f, 0.56f, 0.81f, 0.92f,
+
+    // lashes
+    -0.112f, -0.089f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.089f, -0.115f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.100f, -0.090f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    -0.134f, -0.085f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.100f, -0.099f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.102f, -0.092f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    -0.203f, -0.079f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.099f, -0.091f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.206f, -0.062f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    -0.252f, -0.093f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.200f, -0.078f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.206f, -0.063f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    -0.250f, -0.093f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.231f, -0.119f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.240f, -0.089f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    -0.229f, -0.058f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.216f, -0.074f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.203f, -0.064f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    -0.268f, -0.080f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.248f, -0.095f, 0.00f, 0.33f, 0.32f, 0.36f,
+    -0.229f, -0.080f, 0.00f, 0.33f, 0.32f, 0.36f,
+
+    // eyebrow
+    -0.291f, 0.021f, 0.00f, 0.79f, 0.65f, 0.53f,
+    -0.059f, -0.043f, 0.00f, 0.79f, 0.65f, 0.53f,
+    -0.089f, -0.013f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    // hair
+    -0.055f, 0.208f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.353f, 0.203f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.200f, 0.968f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.391f, 0.223f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.323f, -0.028f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.645f, 0.084f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.182f, 0.221f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.361f, 0.249f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.199f, 0.663f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    -0.387f, 0.091f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.237f, 0.219f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.296f, -0.537f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.036f, 0.387f, 0.00f, 0.79f, 0.65f, 0.53f,
+    -0.001f, 0.203f, 0.00f, 0.79f, 0.65f, 0.53f,
+    0.173f, 0.185f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.134f, 0.220f, 0.00f, 0.79f, 0.65f, 0.53f,
+    0.263f, 0.088f, 0.00f, 0.79f, 0.65f, 0.53f,
+    0.287f, 0.306f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.272f, 0.310f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.455f, 0.420f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.239f, -0.582f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.036f, 0.210f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.093f, 0.466f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.690f, 0.354f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.017f, 0.219f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.274f, 0.352f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.705f, -0.114f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    -0.113f, 0.078f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.059f, 0.434f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.627f, -0.238f, 0.00f, 0.79f, 0.65f, 0.53f,
+
+    0.037f, 0.202f, 0.00f, 0.92f, 0.82f, 0.57f,
+    0.037f, 0.395f, 0.00f, 0.92f, 0.82f, 0.57f,
+    -0.444f, -0.271f, 0.00f, 0.79f, 0.65f, 0.53f,
+};
+
+GLuint indices[] =
+{
+    // 12, 3, 4 // accidental squint
 };
 
 // define OpenGL object IDs to represent the vertex array and the shader program in the GPU
 GLuint vao;         // vertex array object (stores the render state for our vertex array)
 GLuint vbo;         // vertex buffer object (reserves GPU memory for our vertex array)
+GLuint ebo;
 GLuint shader;      // combined vertex and fragment shader
 
 // called by the main function to do initial setup, such as uploading vertex
@@ -43,6 +276,7 @@ bool setup()
     // generate the VAO and VBO objects and store their IDs in vao and vbo, respectively
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
+    glGenBuffers(1, &ebo); 
 
     // bind the newly-created VAO to make it the current one that OpenGL will apply state changes to
     glBindVertexArray(vao);
@@ -51,23 +285,29 @@ bool setup()
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
+    // ADD EBO
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
     // on the VAO, register the current VBO with the following vertex attribute layout:
     // - layout location 0...
     // - ... shall consist of 3 GL_FLOATs (corresponding to x, y, and z coordinates)
     // - ... its values will NOT be normalized (GL_FALSE)
     // - ... the stride length is the number of bytes of all 3 floats of each vertex (hence, 3 * sizeof(float))
     // - ... and we start at the beginning of the array (hence, (void*) 0)
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*) 0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*) 0); // position
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*) (3 * sizeof(float))); // color
 
     // enable the newly-created layout location 0;
     // this shall be used by our vertex shader to read the vertex's x, y, and z
     glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 
     // important: if you have more vertex arrays to draw, make sure you separately define them
     // with unique VAO and VBO IDs, and follow the same process above to upload them to the GPU
 
     // load our shader program
-    shader = gdevLoadShader("demo1.vs", "demo1.fs");
+    shader = gdevLoadShader("ex1.vs", "ex1.fs");
     if (! shader)
         return false;
 
@@ -87,6 +327,7 @@ void render()
     // ... draw our triangles
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / (3 * sizeof(float)));
+    glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(GLuint), GL_UNSIGNED_INT, 0);
 }
 
 /*****************************************************************************/
