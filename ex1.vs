@@ -20,8 +20,8 @@ out vec3 shaderColor;
 void main()
 {
     // gl_Position = vec4(vertexPosition.x, vertexPosition.y + 3, vertexPosition.z, 1.0f); 
-    gl_Position = vec4(vertexPosition.x, vertexPosition.y + (up * clamp(3*cos(seconds), 0.0f, 2.0f)), vertexPosition.z, 1.0f); 
-
+    // gl_Position = vec4(vertexPosition.x, vertexPosition.y + (up * clamp(3*cos(seconds), 0.0f, 2.0f)), vertexPosition.z, 1.0f); 
+    gl_Position = vec4(vertexPosition.x, vertexPosition.y + 2 * cos(0.4 * seconds), vertexPosition.z, 1.0f); 
 
     // check animatable elements (per vertex)
     // Frown Animation
