@@ -12,16 +12,16 @@ layout (location = 1) in vec3 vertexColor;
 layout (location = 2) in vec2 vertexAnim;
 uniform vec4 browChange;
 uniform float glow;
-uniform float up;
 uniform float animate;
+uniform float color;
 uniform float seconds;
+uniform float frown;
+uniform vec3 colorChange;
 out vec3 shaderColor;
 
 void main()
 {
-    // gl_Position = vec4(vertexPosition.x, vertexPosition.y + 3, vertexPosition.z, 1.0f); 
-    // gl_Position = vec4(vertexPosition.x, vertexPosition.y + (up * clamp(3*cos(seconds), 0.0f, 2.0f)), vertexPosition.z, 1.0f); 
-    gl_Position = vec4(vertexPosition.x, vertexPosition.y + 2 * cos(0.4 * seconds), vertexPosition.z, 1.0f); 
+    gl_Position = vec4(vertexPosition.x, vertexPosition.y + (clamp(2 * cos(seconds * 0.7f), 0.0f, 3.0f)), vertexPosition.z, 1.0f); 
 
     // check animatable elements (per vertex)
     // Frown Animation
@@ -48,9 +48,10 @@ void main()
     }
     
     // check glowable elements
-    // if (vertexAnim.x == 4) { 
-    //   shaderColor = vec3(vertexColor.xyz * glow);
-    // }
-
-    shaderColor = vertexColor;
+    if (vertexAnim.x == 4 && vertexAnim.y == 0 && color == 1) { 
+        shaderColor = colorChange;
+    } 
+    else {
+        shaderColor = vertexColor * glow;
+    }
 }

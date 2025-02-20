@@ -335,15 +335,10 @@ float vertices[] =
     -0.444f, -0.271f, 0.00f, 0.79f, 0.65f, 0.53f, 0.0f, 0.0f,
 };
 
-GLuint indices[] =
-{
-    // 12, 3, 4 // accidental squint
-};
 
 // define OpenGL object IDs to represent the vertex array and the shader program in the GPU
 GLuint vao;         // vertex array object (stores the render state for our vertex array)
 GLuint vbo;         // vertex buffer object (reserves GPU memory for our vertex array)
-GLuint ebo;
 GLuint shader;      // combined vertex and fragment shader
 
 // called by the main function to do initial setup, such as uploading vertex
@@ -353,7 +348,6 @@ bool setup()
     // generate the VAO and VBO objects and store their IDs in vao and vbo, respectively
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
-    glGenBuffers(1, &ebo); 
 
     // bind the newly-created VAO to make it the current one that OpenGL will apply state changes to
     glBindVertexArray(vao);
@@ -361,10 +355,6 @@ bool setup()
     // upload our vertex array data to the newly-created VBO
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    // ADD EBO
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // on the VAO, register the current VBO with the following vertex attribute layout:
     // - layout location 0...
@@ -404,63 +394,47 @@ void render()
 
     // setting timing for animations
     int t = glfwGetTime(); // int for time so we can modulo
-    int m = t % 4; 
-    float glow = fabs((glfwGetTime() / 3.0f)) / 2.0f + 0.5f;
+    float glow = fabs((cos(glfwGetTime()) / 3.0f)) / 2.0f + 0.5f;
     float s = glfwGetTime();
     float a = 0;
-    float up = 0;
+    float c = 0;
     float xbottom = 0.005f;
     float ybottom = 0.063f;
     float xtop = 0.009f;
     float ytop = 0.053f;
+    float frownTime = sin(t * 0.7 - 1.57079632f);
+    float r = 0.25f;
+    float g = 0.86f;
+    float b = 0.68f;
 
-    cout << m << "    ";
-    // cout << sin(s) << endl;
-    // cout << "seconds: " << s << endl;
+    if (frownTime < 0.3) {
+        glow = 1;
+    }
     
-    if (m >= 0 && m < 2) {
-        up = 1;
-        cout << "UP";
+    if (frownTime > 0.527f) { // eye color change to 0.25f, 0.86f, 0.68 from 0.81f, 0.92f, 4.0f,
+        c = 1;
+        cout << "CHOLOR";
     }
-    if (m >= 2 && m < 4){
-        a = 2;
-        cout << "TRUEE";
-    }
-    // std :: cout << "a= " << a << std :: endl;
-    // std :: cout << "xbottom: " << xbottom;
 
-    // if(m > 1) {
-    //     if(m == 2) {
-    //         std :: cout << "BEFOREd xbottom: " << xbottom;
-    //         xbottom += t/t - 0.999;
-    //         ybottom += t/t - 0.999;
-    //         xtop += t/t - 0.9990;
-    //         ytop += t/t - 0.999;
-    //         std :: cout << "IN N N N xbottom: " << xbottom;
-    //     }
-    //     if(m == 3) {
-    //         xbottom += t/t - 0.999;
-    //         ybottom += t/t - 0.999;
-    //         ytop += t/t - 0.999;
-    //         std :: cout << "INNNN";
-    //     }
-    //     if(m == 4) {
-    //         ybottom += 0.001f;
-    //         ytop += t/t - 0.999;
-    //         std :: cout << "INNNN";
-    //     }
-    //     if(m == 5) {
-    //         ybottom += t/t - 0.999;
-    //         std :: cout << "INNNN";
-    //     }
-    // }
+    if (frownTime > 0.5f){ // expression change
+        a = 2;
+    } else {
+        glow = 1;
+    }
+
+    
 
     // add unifoms
     glUniform1f(glGetUniformLocation(shader, "glow"), glow);
     glUniform1f(glGetUniformLocation(shader, "seconds"), s);
     glUniform1f(glGetUniformLocation(shader, "animate"), a);
-    glUniform1f(glGetUniformLocation(shader, "up"), up);
+    glUniform1f(glGetUniformLocation(shader, "color"), c);
     glUniform4f(glGetUniformLocation(shader, "browChange"), xbottom, ybottom, xtop, ytop);
+    glUniform1f(glGetUniformLocation(shader, "frown"), frownTime);
+    glUniform3f(glGetUniformLocation(shader, "colorChange"), r, g, b);
+
+
+
 
     // using our shader program...
     glUseProgram(shader);
@@ -468,7 +442,6 @@ void render()
     // ... draw our triangles
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / (3 * sizeof(float)));
-    glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(GLuint), GL_UNSIGNED_INT, 0);
 }
 
 /*****************************************************************************/
