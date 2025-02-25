@@ -18,6 +18,8 @@ uniform float seconds;
 uniform float frown;
 uniform vec3 colorChange;
 out vec3 shaderColor;
+out float eyeAnimation;
+
 
 void main()
 {
@@ -26,32 +28,34 @@ void main()
     // check animatable elements (per vertex)
     // Frown Animation
     if (vertexAnim.x == 1 && vertexAnim.y == 1 && animate == 2) { // check if left brow bottom
-        gl_Position = vec4(vertexPosition.x + (browChange.x), vertexPosition.y - (browChange.y), vertexPosition.z, 1.0f);   
+        gl_Position = mix(gl_Position, vec4(vertexPosition.x + (browChange.x), vertexPosition.y - (browChange.y), vertexPosition.z, 1), abs(cos(seconds * 0.7)+1/2));
     }
     if (vertexAnim.x == 1 && vertexAnim.y == 2 && animate == 2) { // check if left brow top
-        gl_Position = vec4(vertexPosition.x + (browChange.z), vertexPosition.y - (browChange.w), vertexPosition.z, 1.0f);
+        gl_Position = mix(gl_Position, vec4(vertexPosition.x + (browChange.z), vertexPosition.y - (browChange.w), vertexPosition.z, 1), abs(cos(seconds * 0.7)+1/2));
     } 
     if (vertexAnim.x == 2 && vertexAnim.y == 1 && animate == 2) { // check if right brow bottom
-        gl_Position = vec4(vertexPosition.x + (browChange.x), vertexPosition.y - (browChange.y), vertexPosition.z, 1.0f);
+        gl_Position = mix(vec4(vertexPosition, 1), vec4(vertexPosition.x + (browChange.x), vertexPosition.y - (browChange.y), vertexPosition.z, 1), abs(cos(seconds * 0.7)+1/2));
     }
     if (vertexAnim.x == 2 && vertexAnim.y == 2 && animate == 2) { // check if right brow top
-        gl_Position = vec4(vertexPosition.x + (browChange.z), vertexPosition.y - (browChange.w), vertexPosition.z, 1.0f);
+        gl_Position = mix(vec4(vertexPosition, 1), vec4(vertexPosition.x + (browChange.z), vertexPosition.y - (browChange.w), vertexPosition.z, 1), abs(cos(seconds * 0.7)+1/2));
     }
     if (vertexAnim.x == 3 && vertexAnim.y == 1 && animate == 2) { // check if left corner lip
-        gl_Position = vec4(vertexPosition.x, vertexPosition.y - (0.010f), vertexPosition.z, 1.0f);
+        gl_Position = mix(gl_Position, vec4(vertexPosition.x, vertexPosition.y - (0.014f), vertexPosition.z, 1), abs(cos(seconds * 0.7)+1/2));
     }
     if (vertexAnim.x == 3 && vertexAnim.y == 2 && animate == 2) { // check if right corner lip
-        gl_Position = vec4(vertexPosition.x, vertexPosition.y + (0.010f), vertexPosition.z, 1.0f);
+        gl_Position = mix(gl_Position, vec4(vertexPosition.x, vertexPosition.y + (0.014f), vertexPosition.z, 1), abs(cos(seconds * 0.7)+1/2));
     }
     if (vertexAnim.x == 3 && vertexAnim.y == 3 && animate == 2) { // check if middle lip
-        gl_Position = vec4(vertexPosition.x, vertexPosition.y - (0.010f), vertexPosition.z, 1.0f);
+        gl_Position = mix(gl_Position, vec4(vertexPosition.x, vertexPosition.y - (0.014f), vertexPosition.z, 1), abs(cos(seconds * 0.7)+1/2));
     }
     
     // check glowable elements
     if (vertexAnim.x == 4 && vertexAnim.y == 0 && color == 1) { 
-        shaderColor = colorChange;
+        shaderColor = mix(vertexColor, colorChange, abs(cos(seconds * 0.7)+1/2));
+        eyeAnimation = vertexAnim.x;
     } 
     else {
-        shaderColor = vertexColor * glow;
+        shaderColor = vertexColor;
+        eyeAnimation = 0;
     }
 }

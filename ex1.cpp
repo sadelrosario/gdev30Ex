@@ -32,6 +32,24 @@ float vertices[] =
     //  0.40f, -0.50f,  0.00f, 0.00f, 0.00f, 0.00f,
     //  0.00f,  0.50f,  0.00f, 1.00f, 1.00f, 1.00f
 
+    // background
+    -1.000f, 1.000f, 0.00f, 0.76f, 0.80f, 0.82f, 0.0f, 0.0f,
+    0.000f, 0.000f, 0.00f, 1.00f, 1.00f, 1.00f, 0.0f, 0.0f,
+    1.000f, 1.000f, 0.00f, 0.76f, 0.80f, 0.82f, 0.0f, 0.0f,
+
+    -1.000f, 1.000f, 0.00f, 0.76f, 0.80f, 0.82f, 0.0f, 0.0f,
+    -1.000f, -1.000f, 0.00f, 0.76f, 0.80f, 0.82f, 0.0f, 0.0f,
+    0.000f, 0.000f, 0.00f, 1.00f, 1.00f, 1.00f, 0.0f, 0.0f,
+
+    -1.000f, -1.000f, 0.00f, 0.76f, 0.80f, 0.82f, 0.0f, 0.0f,
+    1.000f, -1.000f, 0.00f, 0.76f, 0.80f, 0.82f, 0.0f, 0.0f,
+    0.000f, 0.000f, 0.00f, 1.00f, 1.00f, 1.00f, 0.0f, 0.0f,
+    
+    0.000f, 0.000f, 0.00f, 1.00f, 1.00f, 1.00f, 0.0f, 0.0f,
+    1.000f, -1.000f, 0.00f, 0.76f, 0.80f, 0.82f, 0.0f, 0.0f,
+    1.000f, 1.000f, 0.00f, 0.76f, 0.80f, 0.82f, 0.0f, 0.0f,
+    
+
     // hair (back)
      0.362f, -0.006f, 0.00f, 0.92f, 0.82f, 0.57f, 0.0f, 0.0f,
      0.281f, -0.227f, 0.00f, 0.92f, 0.82f, 0.57f, 0.0f, 0.0f,
@@ -204,19 +222,19 @@ float vertices[] =
     -0.229f, -0.080f, 0.00f, 0.33f, 0.32f, 0.36f, 0.0f, 0.0f,
 
     // // eyebrow LEFT (frown)
-    // -0.291f,  0.021f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f,
-    // -0.059f, -0.043f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f,
-    // -0.089f, -0.013f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f,
+    // -0.291f,  0.021f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f, 1.0f, 0.0f,
+    // -0.059f, -0.043f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f, 1.0f, 1.0f, // animate brow bottom
+    // -0.089f, -0.013f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f, 1.0f, 2.0f, // animate brow top
 
     // // eyebrow RIGHT (frown)
-    // 0.081f, -0.043f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f,
-    // 0.313f,  0.021f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f,
-    // 0.112f, -0.013f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f,
+    // 0.081f, -0.043f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f, 2.0f, 0.0f, 
+    // 0.313f,  0.021f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f, 2.0f, 1.0f, // animate brow bottmm
+    // 0.112f, -0.013f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f, 2.0f, 2.0f,// animate brow top
 
     // // mouth (frown)
-    // -0.056, -0.367f, 0.00f, 0.87f, 0.71f, 0.61f, 2.0f,
-    //  0.076, -0.368f, 0.00f, 0.87f, 0.71f, 0.61f, 2.0f,
-    //  0.011, -0.357f, 0.00f, 0.87f, 0.71f, 0.61f, 2.0f,
+    // -0.056, -0.367f, 0.00f, 0.87f, 0.71f, 0.61f, 2.0f, 3.0f, 1.0f, 
+    //  0.076, -0.368f, 0.00f, 0.87f, 0.71f, 0.61f, 2.0f, 3.0f, 3.0f,
+    //  0.011, -0.357f, 0.00f, 0.87f, 0.71f, 0.61f, 2.0f, 3.0f, 2.0f,
 
     // left brow (happy)
     -0.292f, 0.020f, 0.00f, 0.79f, 0.65f, 0.53f, 1.0f, 0.0f,
@@ -389,11 +407,10 @@ bool setup()
 void render()
 {
     // clear the whole frame
-    glClearColor(0.0f, 0.3f, 0.3f, 1.0f);
+    glClearColor(0.00f, 0.00f, 0.00f, 1.0f); // 90%, 92%, 93%
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // setting timing for animations
-    int t = glfwGetTime(); // int for time so we can modulo
     float glow = fabs((cos(glfwGetTime()) / 3.0f)) / 2.0f + 0.5f;
     float s = glfwGetTime();
     float a = 0;
@@ -402,22 +419,24 @@ void render()
     float ybottom = 0.063f;
     float xtop = 0.009f;
     float ytop = 0.053f;
-    float frownTime = sin(t * 0.7 - 1.57079632f);
+    // float frownTime = sin(t * 0.7 - 1.57079632f);
+    float frownTime = -cos(s * 0.7);
     float r = 0.25f;
     float g = 0.86f;
     float b = 0.68f;
+    
 
     if (frownTime < 0.3) {
         glow = 1;
     }
     
-    if (frownTime > 0.527f) { // eye color change to 0.25f, 0.86f, 0.68 from 0.81f, 0.92f, 4.0f,
+    if (frownTime > 0.427f) { // eye color change to 0.25f, 0.86f, 0.68 from 0.81f, 0.92f, 4.0f,
         c = 1;
-        cout << "CHOLOR";
     }
 
-    if (frownTime > 0.5f){ // expression change
+    if (frownTime > 0.2f){ // expression change
         a = 2;
+ 
     } else {
         glow = 1;
     }
