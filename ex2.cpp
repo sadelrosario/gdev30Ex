@@ -16,6 +16,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/gtc/type_ptr.hpp>
 #include <gdev.h>
+using namespace std;
 
 // change this to your desired window attributes
 #define WINDOW_WIDTH  1000
@@ -23,168 +24,164 @@
 #define WINDOW_TITLE  "ROUND 1 - MY CLEMATIS"
 GLFWwindow *pWindow;
 
+float mapTexture(float coordinate) {
+    return (coordinate / 2) + 0.5f;
+}
+
 // define a vertex array to hold our vertices
-float vertices[] =
-{
-    // position (x, y, z)  color (r, g, b)   texture coordinates (s, t)
-    // -0.30f, -0.50f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    // 0.30f, -0.50f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    // -0.30f, 0.50f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+float vertices[] =   
+{    
+    // position (x, y, z)        color (r, g, b)          texture coordinates (s, t)              animation    isPetal   
     
-    // 0.30f, 0.50f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    // -0.30f, 0.50f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    // 0.30f, -0.50f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f
+    // middle    
+    -0.030f,  0.314f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.030f), mapTexture( 0.314f),  1.0f,  0.0f,
+     0.044f,  0.135f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.044f), mapTexture( 0.135f),  1.0f,  0.0f,
+     0.240f,  0.131f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.240f), mapTexture( 0.131f),  1.0f,  0.0f,
+     
+    -0.262f,  0.155f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.262f), mapTexture( 0.155f),  1.0f,  0.0f, 
+    -0.054f,  0.142f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.054f), mapTexture( 0.142f),  1.0f,  0.0f,
+    -0.030f,  0.314f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.030f), mapTexture( 0.314f),  1.0f,  0.0f, 
 
-    // middle
-    -0.030f, 0.314f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.044f, 0.135f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.240f, 0.131f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.262f,  0.155f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.262f), mapTexture( 0.155f),  1.0f,  0.0f,
+    -0.174f, -0.171f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.174f), mapTexture(-0.171f),  1.0f,  0.0f,
+    -0.095f, -0.002f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.095f), mapTexture(-0.002f),  1.0f,  0.0f, 
 
-    -0.262f, 0.155f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.054f, 0.142f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.030f, 0.314f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.174f, -0.171f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.174f), mapTexture(-0.171f),  1.0f,  0.0f,
+     0.141f, -0.143f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.141f), mapTexture(-0.143f),  1.0f,  0.0f,
+     0.003f, -0.046f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.003f), mapTexture(-0.046f),  1.0f,  0.0f, 
 
-    -0.262f, 0.155f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.174f, -0.171f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.095f, -0.002f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     0.141f, -0.143f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.141f), mapTexture(-0.143f),  1.0f,  0.0f,
+     0.240f,  0.131f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.240f), mapTexture( 0.131f),  1.0f,  0.0f,
+     0.084f,  0.043f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.084f), mapTexture( 0.043f),  1.0f,  0.0f,
 
-    -0.174f, -0.171f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.141f, -0.143f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.003f, -0.046f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.030f,  0.314f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.030f), mapTexture( 0.314f),  1.0f,  0.0f,
+    -0.054f,  0.142f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.054f), mapTexture( 0.142f),  1.0f,  0.0f,
+     0.044f,  0.135f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.044f), mapTexture( 0.135f),  1.0f,  0.0f,
 
-    0.141f, -0.143f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.240f, 0.131f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.084f, 0.043f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.262f,  0.155f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.262f), mapTexture( 0.155f),  1.0f,  0.0f,
+    -0.095f, -0.002f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.095f), mapTexture(-0.002f),  1.0f,  0.0f,
+    -0.054f,  0.142f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.054f), mapTexture( 0.142f),  1.0f,  0.0f,
 
-    -0.030f, 0.314f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.054f, 0.142f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.044f, 0.135f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.095f, -0.002f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.095f), mapTexture(-0.002f),  1.0f,  0.0f,
+    -0.174f, -0.171f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.174f), mapTexture(-0.171f),  1.0f,  0.0f,
+     0.003f, -0.046f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.003f), mapTexture(-0.046f),  1.0f,  0.0f,
 
-    -0.262f, 0.155f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.095f, -0.002f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.054f, 0.142f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     0.003f, -0.046f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.003f), mapTexture(-0.046f),  1.0f,  0.0f,
+     0.141f, -0.143f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.141f), mapTexture(-0.143f),  1.0f,  0.0f,
+     0.084f,  0.043f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.084f), mapTexture( 0.043f),  1.0f,  0.0f,
 
-    -0.095f, -0.002f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.174f, -0.171f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.003f, -0.046f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     0.044f,  0.135f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.044f), mapTexture( 0.135f),  1.0f,  0.0f,
+     0.084f,  0.043f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.084f), mapTexture( 0.043f),  1.0f,  0.0f,
+     0.240f,  0.131f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.240f), mapTexture( 0.131f),  1.0f,  0.0f,
 
-    0.003f, -0.046f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.141f, -0.143f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.084f, 0.043f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.054f,  0.142f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.054f), mapTexture( 0.142f),  1.0f,  0.0f,
+    -0.095f, -0.002f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.095f), mapTexture(-0.002f),  1.0f,  0.0f,
+     0.044f,  0.135f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.044f), mapTexture( 0.135f),  1.0f,  0.0f,
 
-    0.044f, 0.135f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.084f, 0.043f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.240f, 0.131f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     0.044f,  0.135f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.044f), mapTexture( 0.135f),  1.0f,  0.0f,
+    -0.095f, -0.002f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.095f), mapTexture(-0.002f),  1.0f,  0.0f,
+     0.003f, -0.046f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.003f), mapTexture(-0.046f),  1.0f,  0.0f,
+ 
+     0.044f,  0.135f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.044f), mapTexture( 0.135f),  1.0f,  0.0f,
+     0.003f, -0.046f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.003f), mapTexture(-0.046f),  1.0f,  0.0f,
+     0.084f,  0.043f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.084f), mapTexture( 0.043f),  1.0f,  0.0f,
+    
 
-    -0.054f, 0.142f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.095f, -0.002f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.044f, 0.135f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     // petal 1 (bottom )          
+    -0.171f, -0.152f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.171f), mapTexture(-0.152f),  2.0f,  1.0f, 
+    -0.406f, -0.649f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.406f), mapTexture(-0.649f),  2.0f,  1.0f, 
+     0.135f, -0.141f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.135f), mapTexture(-0.141f),  2.0f,  1.0f,  
 
-    0.044f, 0.135f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.095f, -0.002f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.003f, -0.046f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.406f, -0.649f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.406f), mapTexture(-0.649f),  2.0f,  1.0f,
+     0.403f, -0.471f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.403f), mapTexture(-0.471f),  2.0f,  1.0f,
+     0.135f, -0.141f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.135f), mapTexture(-0.141f),  2.0f,  1.0f, 
 
-    0.044f, 0.135f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.003f, -0.046f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.084f, 0.043f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.406f, -0.649f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.406f), mapTexture(-0.649f),  2.0f,  1.0f,
+     0.434f, -1.012f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.434f), mapTexture(-1.012f),  2.0f,  1.0f,
+     0.403f, -0.471f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.403f), mapTexture(-0.471f),  2.0f,  1.0f,
+         
+    -0.406f, -0.649f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.406f), mapTexture(-0.649f),  2.0f,  1.0f,
+    -1.140f, -1.030f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-1.140f), mapTexture(-1.030f),  2.0f,  1.0f,
+     0.434f, -1.012f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.434f), mapTexture(-1.012f),  2.0f,  1.0f, 
 
-    // petal 1 (bottom)
-    -0.171f, -0.152f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.406f, -0.649f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.135f, -0.141f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    // petal 2 (bottom  left)          
+    -0.737f,  0.324f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.737f), mapTexture( 0.324f),  3.0f,  2.0f, 
+    -0.174f, -0.171f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.174f), mapTexture(-0.171f),  3.0f,  2.0f, 
+    -0.262f,  0.155f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.262f), mapTexture( 0.155f),  3.0f,  2.0f,  
 
-    -0.406f, -0.649f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.403f, -0.471f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.135f, -0.141f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.737f,  0.324f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.737f), mapTexture( 0.324f),  3.0f,  2.0f, 
+    -0.406f, -0.649f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.406f), mapTexture(-0.649f),  3.0f,  2.0f, 
+    -0.174f, -0.171f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.174f), mapTexture(-0.171f),  3.0f,  2.0f, 
+     
+    -0.737f,  0.324f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.737f), mapTexture( 0.324f),  3.0f,  2.0f, 
+    -1.140f, -1.030f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-1.140f), mapTexture(-1.030f),  3.0f,  2.0f, 
+    -0.406f, -0.649f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.406f), mapTexture(-0.649f),  3.0f,  2.0f, 
+     
+    -0.737f,  0.324f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.737f), mapTexture( 0.324f),  3.0f,  2.0f, 
+    -1.000f,  0.613f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-1.000f), mapTexture( 0.613f),  3.0f,  2.0f, 
+    -1.140f, -1.030f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-1.140f), mapTexture(-1.030f),  3.0f,  2.0f,  
 
-    -0.406f, -0.649f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.434f, -1.012f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.403f, -0.471f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-   
-    -0.406f, -0.649f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -1.140f, -1.030f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.434f, -1.012f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    // petal  3 (top l eft)          
+    -0.101f,  0.739f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.101f), mapTexture( 0.739f),  4.0f,  3.0f, 
+    -0.262f,  0.155f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.262f), mapTexture( 0.155f),  4.0f,  3.0f, 
+    -0.030f,  0.314f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.030f), mapTexture( 0.314f),  4.0f,  3.0f, 
 
-    // petal 2 (bottom left)
-    -0.737f, 0.324f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.174f, -0.171f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.262f, 0.155f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.101f,  0.739f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.101f), mapTexture( 0.739f),  4.0f,  3.0f, 
+    -0.737f,  0.324f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.737f), mapTexture( 0.324f),  4.0f,  3.0f, 
+    -0.262f,  0.155f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.262f), mapTexture( 0.155f),  4.0f,  3.0f, 
 
-    -0.737f, 0.324f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.406f, -0.649f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.174f, -0.171f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.101f,  0.739f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.101f), mapTexture( 0.739f),  4.0f,  3.0f, 
+    -1.626f,  1.157f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-1.626f), mapTexture( 1.157f),  4.0f,  3.0f, 
+    -0.737f,  0.324f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.737f), mapTexture( 0.324f),  4.0f,  3.0f, 
 
-    -0.737f, 0.324f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -1.140f, -1.030f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.406f, -0.649f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+    -0.101f,  0.739f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.101f), mapTexture( 0.739f),  4.0f,  3.0f, 
+     0.033f,  1.150f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.033f), mapTexture( 1.150f),  4.0f,  3.0f, 
+    -1.626f,  1.157f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-1.626f), mapTexture( 1.157f),  4.0f,  3.0f, 
+         
+    // petal  4 (top r ight)          
+     0.692f,  0.383f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.692f), mapTexture( 0.383f),  5.0f,  4.0f,
+    -0.030f,  0.314f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.030f), mapTexture( 0.314f),  5.0f,  4.0f,
+     0.240f,  0.131f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.240f), mapTexture( 0.131f),  5.0f,  4.0f,   
+       
+     0.692f,  0.383f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.692f), mapTexture( 0.383f),  5.0f,  4.0f,
+    -0.101f,  0.739f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.101f), mapTexture( 0.739f),  5.0f,  4.0f,
+    -0.030f,  0.314f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.030f), mapTexture( 0.314f),  5.0f,  4.0f,
 
-    -0.737f, 0.324f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -1.000f, 0.613f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -1.140f, -1.030f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     0.692f,  0.383f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.692f), mapTexture( 0.383f),  5.0f,  4.0f,
+     0.010f,  1.080f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.010f), mapTexture( 1.080f),  5.0f,  4.0f,
+    -0.101f,  0.739f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.101f), mapTexture( 0.739f),  5.0f,  4.0f,
 
+     0.692f,  0.383f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.692f), mapTexture( 0.383f),  5.0f,  4.0f,
+     1.006f,  1.009f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 1.006f), mapTexture( 1.009f),  5.0f,  4.0f,
+    -0.010f,  1.080f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture(-0.010f), mapTexture( 1.080f),  5.0f,  4.0f,
 
-    // petal 3 (top left)
-    -0.101f, 0.739f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.262f, 0.155f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.030f, 0.314f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     0.692f,  0.383f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.692f), mapTexture( 0.383f),  5.0f,  4.0f,
+     1.013f,  0.328f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 1.013f), mapTexture( 0.328f),  5.0f,  4.0f,
+     1.006f,  1.009f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 1.006f), mapTexture( 1.009f),  5.0f,  4.0f,
+         
+    // petal 5 (bottom  right)          
+     0.403f, -0.471f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.403f), mapTexture(-0.471f),  6.0f,  5.0f,
+     0.240f,  0.131f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.240f), mapTexture( 0.131f),  6.0f,  5.0f,
+     0.129F, -0.143f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.129F), mapTexture(-0.143f),  6.0f,  5.0f, 
 
-    -0.101f, 0.739f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.737f, 0.324f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.262f, 0.155f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     0.403f, -0.471f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.403f), mapTexture(-0.471f),  6.0f,  5.0f,
+     0.692f,  0.383f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.692f), mapTexture( 0.383f),  6.0f,  5.0f,
+     0.240f,  0.131f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.240f), mapTexture( 0.131f),  6.0f,  5.0f, 
 
-    -0.101f, 0.739f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -1.626f, 1.157f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.737f, 0.324f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     0.403f, -0.471f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.403f), mapTexture(-0.471f),  6.0f,  5.0f,
+     1.018f,  0.334f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 1.018f), mapTexture( 0.334f),  6.0f,  5.0f,
+     0.692f,  0.383f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.692f), mapTexture( 0.383f),  6.0f,  5.0f,   
 
-    -0.101f, 0.739f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.033f, 1.150f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -1.626f, 1.157f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+     0.403f, -0.471f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.403f), mapTexture(-0.471f),  6.0f,  5.0f,
+     1.025f, -1.030f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 1.025f), mapTexture(-1.030f),  6.0f,  5.0f,
+     1.013f,  0.328f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 1.013f), mapTexture( 0.328f),  6.0f,  5.0f, 
 
-    // petal 4 (top right)
-    0.692f, 0.383f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.030f, 0.314f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.240f, 0.131f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-    0.692f, 0.383f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.101f, 0.739f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.030f, 0.314f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-    0.692f, 0.383f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.010f, 1.080f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.101f, 0.739f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-    0.692f, 0.383f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    1.006f, 1.009f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    -0.010f, 1.080f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-    0.692f, 0.383f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    1.013f, 0.328f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    1.006f, 1.009f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-    // petal 5 (bottom right)
-    0.403f, -0.471f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.240f, 0.131f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.129, -0.143f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-    0.403f, -0.471f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.692f, 0.383f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.240f, 0.131f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-    0.403f, -0.471f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    1.018f, 0.334f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.692f, 0.383f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-    0.403f, -0.471f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    1.025f, -1.030f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    1.013f, 0.328f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-    0.403f, -0.471f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    0.423f, -1.024f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-    1.025f, -1.030f, 0.00f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f
-};
-
-// define OpenGL object IDs to represent the vertex array and the shader program in the GPU
-GLuint vao;         // vertex array object (stores the render state for our vertex array)
+     0.403f, -0.471f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.403f), mapTexture(-0.471f),  6.0f,  5.0f,
+     1.025f, -1.030f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 1.025f), mapTexture(-1.030f),  6.0f,  5.0f,
+     0.423f, -1.024f,  0.00f,    1.0f,  1.0f,  1.0f,      mapTexture( 0.423f), mapTexture(-1.024f),  6.0f,  5.0f,
+};  
+// define OpenGL object IDs to repres ent the vertex array and the shader program in the GPU
+GLuint vao;         // vertex array o bject (stores the render state for our vertex array)
 GLuint vbo;         // vertex buffer object (reserves GPU memory for our vertex array)
 GLuint shader;      // combined vertex and fragment shader
 GLuint texture;     // texture ID
@@ -211,15 +208,18 @@ bool setup()
     // - ... its values will NOT be normalized (GL_FALSE)
     // - ... the stride length is the number of bytes of all 3 floats of each vertex (hence, 3 * sizeof(float))
     // - ... and we start at the beginning of the array (hence, (void*) 0)
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*) 0); // position
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*) (3 * sizeof(float))); // color
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*) (6 * sizeof(float))); // texture
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*) 0); // position
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*) (3 * sizeof(float))); // color
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*) (6 * sizeof(float))); // texture
+    glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*) (8 * sizeof(float))); // animation
+
 
     // enable the newly-created layout location 0;
     // this shall be used by our vertex shader to read the vertex's x, y, and z
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
     glEnableVertexAttribArray(2);
+    glEnableVertexAttribArray(3);
 
     // important: if you have more vertex arrays to draw, make sure you separately define them
     // with unique VAO and VBO IDs, and follow the same process above to upload them to the GPU
@@ -229,7 +229,7 @@ bool setup()
     if (! shader)
         return false;
 
-    texture = gdevLoadTexture("pepe.png", GL_REPEAT, true, true);
+    texture = gdevLoadTexture("mizisua_02.png", GL_REPEAT, true, true);
     texture2 = gdevLoadTexture("childe.jpg", GL_REPEAT, true, true);
 
     if (!texture) return false;
@@ -252,6 +252,15 @@ void render()
 
     float t = glfwGetTime(); 
     glUniform1f(glGetUniformLocation(shader, "t"), t);
+
+    float duration = (-sin(t + 1.5) * 1/2);
+    glUniform1f(glGetUniformLocation(shader, "d"), duration);
+
+
+    int time = glfwGetTime();
+    int timeM = time % 8;
+    cout << duration << "     " << timeM << endl;
+    glUniform1f(glGetUniformLocation(shader, "timeM"), time);
 
     // using our shader program...
     glUseProgram(shader);
