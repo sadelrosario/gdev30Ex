@@ -255,12 +255,9 @@ void render()
 
     float duration = (-sin(t + 1.5) * 1/2);
     glUniform1f(glGetUniformLocation(shader, "d"), duration);
-
-
-    int time = glfwGetTime();
-    int timeM = time % 8;
-    cout << duration << "     " << timeM << endl;
-    glUniform1f(glGetUniformLocation(shader, "timeM"), time);
+    cout << duration << endl;
+    // this duration is timing, if value is negative, the image is together
+    // if positive, it's torn apart
 
     // using our shader program...
     glUseProgram(shader);
