@@ -186,6 +186,7 @@ GLuint vbo;         // vertex buffer object (reserves GPU memory for our vertex 
 GLuint shader;      // combined vertex and fragment shader
 GLuint texture;     // texture ID
 GLuint texture2;
+GLuint displacement;
 
 // called by the main function to do initial setup, such as uploading vertex
 // arrays, shader programs, etc.; returns true if successful, false otherwise
@@ -229,11 +230,13 @@ bool setup()
     if (! shader)
         return false;
 
-    texture = gdevLoadTexture("mizisua_02.png", GL_REPEAT, true, true);
-    texture2 = gdevLoadTexture("childe.jpg", GL_REPEAT, true, true);
+    texture = gdevLoadTexture("mizisua_01.png", GL_REPEAT, true, true);
+    texture2 = gdevLoadTexture("mizisua_02.png", GL_REPEAT, true, true);
+    displacement = gdevLoadTexture("displacement.png", GL_REPEAT, true, true);
 
     if (!texture) return false;
     if (!texture2) return false;
+    if (!displacement) return false;
 
     //gdevLoadTexture is defined in gdev.h, and its parameters are:
     // - the texture filename
@@ -253,9 +256,13 @@ void render()
     float t = glfwGetTime(); 
     glUniform1f(glGetUniformLocation(shader, "t"), t);
 
+    int ii = glfwGetTime(); 
+    int i = ii % 5;
+    glUniform1f(glGetUniformLocation(shader, "i"), i);
+
     float duration = (-sin(t + 1.5) * 1/2);
     glUniform1f(glGetUniformLocation(shader, "d"), duration);
-    cout << duration << endl;
+    // cout << duration << endl;
     // this duration is timing, if value is negative, the image is together
     // if positive, it's torn apart
 
@@ -267,9 +274,12 @@ void render()
     glBindTexture(GL_TEXTURE_2D, texture);
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture2);
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D, displacement);
 
     glUniform1i(glGetUniformLocation(shader, "shaderTextureA"), 0);
     glUniform1i(glGetUniformLocation(shader, "shaderTextureB"), 1);
+    glUniform1i(glGetUniformLocation(shader, "displaceTexture"), 2);
 
     // ... draw our triangles
     glBindVertexArray(vao);

@@ -12,32 +12,70 @@ in vec2 shaderTexCoord;
 in vec2 shaderAnim;
 uniform sampler2D shaderTextureA;
 uniform sampler2D shaderTextureB;
+uniform sampler2D displaceTexture;
 out vec4 fragmentColor;
 uniform float t;
+uniform int i;
 uniform float d;
-vec2 transform = vec2(sin(t), sin(t));
-// vec2 transform = vec2(1.0f, 1.0f);
+vec2 transform = vec2(sin(t * 0.5f), sin(t * 0.5f));
 
-vec4 colorA = texture(shaderTextureA, shaderTexCoord);
-vec4 colorB = texture(shaderTextureB, shaderTexCoord * transform);
+vec4 colorA = texture(shaderTextureA, shaderTexCoord); // mizisua young
+vec4 colorB = texture(shaderTextureB, shaderTexCoord); // mizisua adult
 
 
 void main()
 {
-    // fragmentColor = vec4(shaderColor, sin(t)) * texture(shaderTextureA, shaderTexCoord) * texture(shaderTextureB, shaderTexCoord);
-    // fragmentColor = mix(colorA, colorB, 0.5f);
-    // mix(vec3(shaderColor), vec3(0.82f, 0.23f, 0.23f), (abs(sin(t + 1) * 0.5f)))
+    vec4 displacement = texture(displaceTexture, shaderTexCoord + transform);
+    float value = (displacement.r * 2) - 1; // convert the range of r from [0,1] to [-1, 1]
+    vec2 discs = vec2(-0.05f, -0.05f) * value;
+    vec4 displacedTex = texture(shaderTextureB, shaderTexCoord + discs);
+    vec4 displacedTex_SHIFT = texture(shaderTextureB, (shaderTexCoord + discs) + vec2(cos(t) * -0.01f, 1));
 
-    vec4 colorA = texture(shaderTextureA, shaderTexCoord);
+    // set colors
     vec4 red = vec4(shaderColor.x - 0.18f, shaderColor.y - 0.77f, shaderColor.z - 0.77f, 1.0f);
+    vec4 darkerRed = vec4(shaderColor.x - 0.45f, shaderColor.y - 0.93f, shaderColor.z - 0.89f, 1.0f);
+    vec4 lighterRed = vec4(shaderColor.x - 0.0f, shaderColor.y - 0.48f, shaderColor.z - 0.43f, 1.0f);
+    vec4 yellow = vec4(shaderColor.x - 0.02f, shaderColor.y - 0.04f, shaderColor.z - 0.66f, 1.0f);
 
-    if (shaderAnim.y > 0 && d < 0) {
-        fragmentColor = mix(vec4(colorA), red+colorA, abs(clamp(sin(t), 0, 1)));
-    }
-    else {
-        fragmentColor = colorA;
-    }
-    
+    vec4 totalRed = vec4(shaderColor.x - 0.0f, shaderColor.y - 1.0f, shaderColor.z - 1.0f, 1.0f);
+    vec4 totalGreen = vec4(shaderColor.x - 1.0f, shaderColor.y - 0.0f, shaderColor.z - 1.0f, 1.0f);
+    vec4 totalBlue = vec4(shaderColor.x - 1.0f, shaderColor.y - 1.0f, shaderColor.z - 0.0f, 1.0f);
 
+    vec4 displacedTex_RED = displacedTex_SHIFT * totalRed;
+    vec4 displacedTex_GREEN = displacedTex * totalGreen;
+    vec4 displacedTex_BLUE = displacedTex * totalBlue;
+
+    vec4 screen_DT_R_G = vec4(1, 1, 1, 0) - ((vec4(1, 1, 1, 0) - displacedTex_GREEN) * (vec4(1, 1, 1, 0) - displacedTex_RED));
+    vec4 screen_DT_RG_B = vec4(1, 1, 1, 0) - ((vec4(1, 1, 1, 0) - displacedTex_BLUE) * (vec4(1, 1, 1, 0) - screen_DT_R_G));
+
+    if (shaderAnim.x > 0 && d < 0.1 && d > -0.6) {
+        if (shaderAnim.y == 0)
+            fragmentColor = mix(colorA, colorA * yellow, abs(clamp(sin(t), 0, 1)));
+        else if (shaderAnim.y == 1)
+            fragmentColor = mix(colorA, colorA * red, abs(clamp(sin(t), 0, 1)));
+        else if (shaderAnim.y == 2)
+            fragmentColor = mix(colorA, colorA * darkerRed, abs(clamp(sin(t), 0, 1)));
+        else if (shaderAnim.y == 3)
+            fragmentColor = mix(colorA, colorA * red, abs(clamp(sin(t), 0, 1)));
+        else if (shaderAnim.y == 4)
+            fragmentColor = mix(colorA, colorA * darkerRed, abs(clamp(sin(t), 0, 1)));
+        else
+            fragmentColor = mix(colorA, colorA * lighterRed, abs(clamp(sin(t), 0, 1)));
+    }
+    else if (d > 0.1) { // change to adult mizisua
+        if (shaderAnim.y == 0)
+            fragmentColor = mix(screen_DT_RG_B, colorA * yellow, abs(clamp(sin(t), 0, 1)));
+        else if (shaderAnim.y == 1)
+            fragmentColor = mix(screen_DT_RG_B, colorA * red, abs(clamp(sin(t), 0, 1)));
+        else if (shaderAnim.y == 2)
+            fragmentColor = mix(screen_DT_RG_B, colorA * darkerRed, abs(clamp(sin(t), 0, 1)));
+        else if (shaderAnim.y == 3)
+            fragmentColor = mix(screen_DT_RG_B, colorA * red, abs(clamp(sin(t), 0, 1)));
+        else if (shaderAnim.y == 4)
+            fragmentColor = mix(screen_DT_RG_B, colorA * darkerRed, abs(clamp(sin(t), 0, 1)));
+        else
+            fragmentColor = mix(screen_DT_RG_B, colorA * lighterRed, abs(clamp(sin(t), 0, 1)));
+
+    }
 
 }
