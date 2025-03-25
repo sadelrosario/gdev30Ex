@@ -153,6 +153,16 @@ void render()
     // using our shader program...
     glUseProgram(shader);
 
+    glEnable(GL_DEPTH_TEST); // enable OpenGL's hidden surface removal
+
+    // set 3D transformations
+    glm::mat4 matrix;
+    matrix = glm::perspective(glm::radians(60.0f), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 100.0f);
+    matrix = glm::translate(matrix, glm::vec3(0.0f, 0.0f, -5.0f));
+    matrix = glm::rotate(matrix, glm::radians(abs(t) * 100), glm::vec3(0.0f, 1.0f, 0.0f));
+    matrix = glm::scale(matrix, glm::vec3(1.0f, 1.0f, 1.0f));
+    glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, glm::value_ptr(matrix));
+
     // ... set the active texture...
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture);

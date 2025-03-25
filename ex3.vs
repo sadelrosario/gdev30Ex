@@ -13,9 +13,11 @@ layout (location = 2) in vec2 vertexTexCoord;
 out vec3 shaderColor;
 out vec2 shaderTexCoord;
 
+uniform mat4 matrix;
+
 void main()
 {
-    gl_Position = vec4(vertexPosition.x, vertexPosition.y, vertexPosition.z, 1.0f); // 4th attribute is a homogenous coordinate (the w) 
+    gl_Position = matrix * vec4(vertexPosition.x, vertexPosition.y, vertexPosition.z, 1.0f); // 4th attribute is a homogenous coordinate (the w) 
     shaderColor = vertexColor;
     shaderTexCoord = vertexTexCoord;
 }
