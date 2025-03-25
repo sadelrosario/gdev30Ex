@@ -9,10 +9,9 @@
 
 in vec3 shaderColor;
 in vec2 shaderTexCoord;
+in vec2 shaderSide;
 uniform sampler2D shaderTextureA;
-uniform sampler2D shaderTextureB;
 out vec4 fragmentColor;
-uniform float t;
 // vec2 transform = vec2(sin(t), sin(t));
 // vec2 transform = vec2(1.0f, 1.0f);
 
@@ -23,4 +22,8 @@ vec4 colorA = texture(shaderTextureA, shaderTexCoord);
 void main()
 {
     fragmentColor = colorA;
+    if(shaderSide.x == 2) {
+    fragmentColor = colorA * vec4(shaderColor.x - 0.18f, shaderColor.y - 0.77f, shaderColor.z - 0.77f, 1.0f);;
+        
+    }
 }

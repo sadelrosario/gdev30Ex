@@ -33,51 +33,107 @@ float vertices[] =
     // position (x, y, z)  color (r, g, b)   texture coordinates (s, t)
     
     // base
-    -0.383f, 0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(0.082f),
-    0.432f, 0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.432f), mapTexture(0.082f),
-    0.024f, 0.303f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.024f), mapTexture(0.303f),
+    -0.383f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 0.0f, 0.0f,
+     0.432f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 0.0f, 0.0f,
+     0.024f,  0.303f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 0.0f, 0.0f,
 
-    -0.383f, 0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(0.082f),
-    -0.383f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f),
-    0.432f, 0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.432f), mapTexture(0.082f),
+    -0.383f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 1.0f, 0.0f,
+    -0.383f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f), 1.0f, 0.0f,
+     0.432f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
 
-    -0.383f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f),
-    0.432f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.432f), mapTexture(-0.383f),
-    0.432f, 0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.432f), mapTexture(0.082f),
+    -0.383f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f), 1.0f, 0.0f,
+     0.432f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture(-0.383f), 1.0f, 0.0f,
+     0.432f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
 
     // left ear
-    -0.462f, 0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture(0.253f),
-    -0.379f, 0.079f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.379f), mapTexture(0.079f),
-    -0.351f, 0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture(0.439f),
+    -0.462f,  0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 1.0f, 0.0f,
+    -0.379f,  0.079f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.379f), mapTexture( 0.079f), 1.0f, 0.0f,
+    -0.351f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
 
-    -0.351f, 0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture(0.439f),
-    -0.381f, 0.078f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.381f), mapTexture(0.078f),
-    -0.158f, 0.167f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture(0.167f),
+    -0.351f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
+    -0.381f,  0.078f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.381f), mapTexture( 0.078f), 1.0f, 0.0f,
+    -0.158f,  0.167f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture( 0.167f), 1.0f, 0.0f,
 
-    -0.351f, 0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture(0.439f),
-    -0.158f, 0.167f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture(0.167f),
-    -0.131f, 0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture(0.450f),
+    -0.351f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
+    -0.158f,  0.167f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture( 0.167f), 1.0f, 0.0f,
+    -0.131f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 1.0f, 0.0f,
 
-    -0.131f, 0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture(0.450f),
-    -0.158f, 0.167f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture(0.167f),
-    0.032f, 0.291f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.032f), mapTexture(0.291f),
+    -0.131f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 1.0f, 0.0f,
+    -0.158f,  0.167f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture( 0.167f), 1.0f, 0.0f,
+     0.032f,  0.291f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.032f), mapTexture( 0.291f), 1.0f, 0.0f,
 
     // right ear
-    0.396f, 0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.396f), mapTexture(0.439f),
-    0.425f, 0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.425f), mapTexture(0.082f),
-    0.505f, 0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.505f), mapTexture(0.253f),
+     0.396f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,
+     0.430f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
+     0.505f,  0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 1.0f, 0.0f,
 
-    0.200f, 0.166f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.200f), mapTexture(0.166),
-    0.425f, 0.077f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.425f), mapTexture(0.077f),
-    0.396f, 0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.396f), mapTexture(0.439f),
+     0.200f,  0.166f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.200f), mapTexture( 0.166f), 1.0f, 0.0f,
+     0.432f,  0.077f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.077f), 1.0f, 0.0f,
+     0.396f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,
 
-    0.176f, 0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture(0.450f),
-    0.200f, 0.166f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.200f), mapTexture(0.166),
-    0.396f, 0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.396f), mapTexture(0.439f),
+     0.176f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 1.0f, 0.0f,
+     0.200f,  0.166f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.200f), mapTexture( 0.166f), 1.0f, 0.0f,
+     0.396f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,
 
-    0.176f, 0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture(0.450f),
-    0.011f, 0.290f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.011f), mapTexture(0.290f),
-    0.207f, 0.163f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(0.207), mapTexture(0.163f),
+     0.176f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 1.0f, 0.0f,
+     0.011f,  0.290f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.011f), mapTexture( 0.290f), 1.0f, 0.0f,
+     0.207f,  0.163f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.207f), mapTexture( 0.163f), 1.0f, 0.0f,
+
+
+
+    //FRONT
+    // base
+    -0.383f, 0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 0.0f, 0.0f,
+    0.432f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 0.0f, 0.0f,
+    0.024f,  0.303f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 0.0f, 0.0f,
+
+   -0.383f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 1.0f, 0.0f,
+   -0.383f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f), 1.0f, 0.0f,
+    0.432f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
+
+   -0.383f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f), 1.0f, 0.0f,
+    0.432f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture(-0.383f), 1.0f, 0.0f,
+    0.432f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
+
+   // left ear
+   -0.462f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 1.0f, 0.0f,
+   -0.379f,  0.079f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.379f), mapTexture( 0.079f), 1.0f, 0.0f,
+   -0.351f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
+
+   -0.351f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
+   -0.381f,  0.078f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.381f), mapTexture( 0.078f), 1.0f, 0.0f,
+   -0.158f,  0.167f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture( 0.167f), 1.0f, 0.0f,
+
+   -0.351f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
+   -0.158f,  0.167f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture( 0.167f), 1.0f, 0.0f,
+   -0.131f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 1.0f, 0.0f,
+
+   -0.131f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 1.0f, 0.0f,
+   -0.158f,  0.167f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture( 0.167f), 1.0f, 0.0f,
+    0.032f,  0.291f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.032f), mapTexture( 0.291f), 1.0f, 0.0f,
+
+   // right ear
+    0.396f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,
+    0.430f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
+    0.505f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 1.0f, 0.0f,
+
+    0.200f,  0.166f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.200f), mapTexture( 0.166f), 1.0f, 0.0f,
+    0.432f,  0.077f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.077f), 1.0f, 0.0f,
+    0.396f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,
+
+    0.176f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 1.0f, 0.0f,
+    0.200f,  0.166f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.200f), mapTexture( 0.166f), 1.0f, 0.0f,
+    0.396f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,
+
+    0.176f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 1.0f, 0.0f,
+    0.011f,  0.290f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.011f), mapTexture( 0.290f), 1.0f, 0.0f,
+    0.207f,  0.163f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.207f), mapTexture( 0.163f), 1.0f, 0.0f,
+
+    // SIDE SAMPLE
+    0.430f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
+    0.430f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
+    0.505f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 2.0f, 0.0f,
+
 };
 
 // define OpenGL object IDs to represent the vertex array and the shader program in the GPU
@@ -85,7 +141,6 @@ GLuint vao;         // vertex array object (stores the render state for our vert
 GLuint vbo;         // vertex buffer object (reserves GPU memory for our vertex array)
 GLuint shader;      // combined vertex and fragment shader
 GLuint texture;     // texture ID
-GLuint texture2;
 
 // called by the main function to do initial setup, such as uploading vertex
 // arrays, shader programs, etc.; returns true if successful, false otherwise
@@ -108,15 +163,17 @@ bool setup()
     // - ... its values will NOT be normalized (GL_FALSE)
     // - ... the stride length is the number of bytes of all 3 floats of each vertex (hence, 3 * sizeof(float))
     // - ... and we start at the beginning of the array (hence, (void*) 0)
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*) 0); // position
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*) (3 * sizeof(float))); // color
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*) (6 * sizeof(float))); // texture
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*) 0); // position
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*) (3 * sizeof(float))); // color
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*) (6 * sizeof(float))); // texture
+    glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*) (8 * sizeof(float))); // texture
 
     // enable the newly-created layout location 0;
     // this shall be used by our vertex shader to read the vertex's x, y, and z
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
     glEnableVertexAttribArray(2);
+    glEnableVertexAttribArray(3);
 
     // important: if you have more vertex arrays to draw, make sure you separately define them
     // with unique VAO and VBO IDs, and follow the same process above to upload them to the GPU
@@ -127,11 +184,8 @@ bool setup()
         return false;
 
     texture = gdevLoadTexture("pipipi.png", GL_REPEAT, true, true);
-    texture2 = gdevLoadTexture("childe.jpg", GL_REPEAT, true, true);
 
     if (!texture) return false;
-    if (!texture2) return false;
-
     //gdevLoadTexture is defined in gdev.h, and its parameters are:
     // - the texture filename
     // - the wrap mode (GL_REPEAT, GL_MIRRORED_REPEAT, ...)
@@ -160,17 +214,28 @@ void render()
     matrix = glm::perspective(glm::radians(60.0f), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 100.0f);
     matrix = glm::translate(matrix, glm::vec3(0.0f, 0.0f, -5.0f));
     matrix = glm::rotate(matrix, glm::radians(abs(t) * 100), glm::vec3(0.0f, 1.0f, 0.0f));
+    // matrix = glm::rotate(matrix, -7.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // stagnant rotation
     matrix = glm::scale(matrix, glm::vec3(1.0f, 1.0f, 1.0f));
     glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, glm::value_ptr(matrix));
 
+    // glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f); 
+    // glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+    // glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
+    // glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f); 
+    // glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
+    // glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
+    // const float radius = 10.0f;
+    // float camX = sin(glfwGetTime()) * radius;
+    // float camZ = cos(glfwGetTime()) * radius;
+    // glm::mat4 view;
+    // view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
+    // glUniformMatrix4fv(glGetUniformLocation(shader, "camera"), 1, GL_FALSE, glm::value_ptr(view));
+    
     // ... set the active texture...
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture2);
 
     glUniform1i(glGetUniformLocation(shader, "shaderTextureA"), 0);
-    glUniform1i(glGetUniformLocation(shader, "shaderTextureB"), 1);
 
     // ... draw our triangles
     glBindVertexArray(vao);
