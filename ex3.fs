@@ -21,9 +21,14 @@ vec4 colorA = texture(shaderTextureA, shaderTexCoord);
 
 void main()
 {
+    vec4 shade = vec4(shaderColor.x - 0.19f, shaderColor.y - 0.33f, shaderColor.z - 0.34f, 1.0f);
+    vec4 darkerShade = vec4(shaderColor.x - 0.39f, shaderColor.y - 0.51f, shaderColor.z - 0.52f, 1.0f);
+
     fragmentColor = colorA;
     if(shaderSide.x == 2) {
-    fragmentColor = colorA * vec4(shaderColor.x - 0.18f, shaderColor.y - 0.77f, shaderColor.z - 0.77f, 1.0f);;
-        
+        fragmentColor = colorA * shade;
+    }
+    if(shaderSide.x == 3) {
+        fragmentColor = colorA * darkerShade;
     }
 }

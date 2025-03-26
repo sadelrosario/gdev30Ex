@@ -47,11 +47,11 @@ float vertices[] =
 
     // left ear
     -0.462f,  0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 1.0f, 0.0f,
-    -0.379f,  0.079f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.379f), mapTexture( 0.079f), 1.0f, 0.0f,
+    -0.383f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 1.0f, 0.0f,
     -0.351f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
 
     -0.351f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
-    -0.381f,  0.078f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.381f), mapTexture( 0.078f), 1.0f, 0.0f,
+    -0.383f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383), mapTexture( 0.082f), 1.0f, 0.0f,
     -0.158f,  0.167f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture( 0.167f), 1.0f, 0.0f,
 
     -0.351f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
@@ -64,7 +64,7 @@ float vertices[] =
 
     // right ear
      0.396f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,
-     0.430f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
+     0.432f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
      0.505f,  0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 1.0f, 0.0f,
 
      0.200f,  0.166f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.200f), mapTexture( 0.166f), 1.0f, 0.0f,
@@ -81,7 +81,7 @@ float vertices[] =
 
 
 
-    //FRONT
+    // FRONT
     // base
     -0.383f, 0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 0.0f, 0.0f,
     0.432f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 0.0f, 0.0f,
@@ -97,11 +97,11 @@ float vertices[] =
 
    // left ear
    -0.462f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 1.0f, 0.0f,
-   -0.379f,  0.079f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.379f), mapTexture( 0.079f), 1.0f, 0.0f,
+   -0.383f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 1.0f, 0.0f,
    -0.351f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
 
    -0.351f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
-   -0.381f,  0.078f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.381f), mapTexture( 0.078f), 1.0f, 0.0f,
+   -0.383f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 1.0f, 0.0f,
    -0.158f,  0.167f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture( 0.167f), 1.0f, 0.0f,
 
    -0.351f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,
@@ -114,11 +114,11 @@ float vertices[] =
 
    // right ear
     0.396f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,
-    0.430f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
+    0.432f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,
     0.505f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 1.0f, 0.0f,
 
     0.200f,  0.166f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.200f), mapTexture( 0.166f), 1.0f, 0.0f,
-    0.432f,  0.077f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.077f), 1.0f, 0.0f,
+    0.432f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.077f), 1.0f, 0.0f,
     0.396f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,
 
     0.176f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 1.0f, 0.0f,
@@ -129,11 +129,101 @@ float vertices[] =
     0.011f,  0.290f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.011f), mapTexture( 0.290f), 1.0f, 0.0f,
     0.207f,  0.163f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.207f), mapTexture( 0.163f), 1.0f, 0.0f,
 
-    // SIDE SAMPLE
-    0.430f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
-    0.430f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
-    0.505f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 2.0f, 0.0f,
+    // DEPTH
+    // right ear side
+    0.432f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 3.0f, 0.0f,
+    0.432f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 3.0f, 0.0f,
+    0.505f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 3.0f, 0.0f,
 
+    0.505f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 3.0f, 0.0f,
+    0.432f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 3.0f, 0.0f,
+    0.505f,  0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 3.0f, 0.0f,
+
+    0.396f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 2.0f, 0.0f,
+    0.505f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 2.0f, 0.0f,
+    0.396f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 2.0f, 0.0f,
+
+    0.505f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 2.0f, 0.0f,
+    0.505f,  0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 2.0f, 0.0f,
+    0.396f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 2.0f, 0.0f,
+
+    // (apple) bottom (jeans)
+   -0.381f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.381f), mapTexture( 0.078f), 3.0f, 0.0f,
+   -0.381f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.381f), mapTexture( 0.078f), 3.0f, 0.0f,
+    0.432f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 3.0f, 0.0f,
+
+   -0.381f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.381f), mapTexture( 0.078f), 3.0f, 0.0f,
+    0.432f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 3.0f, 0.0f,
+    0.432f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 3.0f, 0.0f,
+
+    // right base side
+    0.432f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
+    0.432f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
+    0.432f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
+
+    0.432f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
+    0.432f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
+    0.432f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 2.0f, 0.0f,
+
+    // top side
+    0.176f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 2.0f, 0.0f,
+    0.396f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 2.0f, 0.0f,
+    0.396f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 2.0f, 0.0f,
+
+    0.176f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 2.0f, 0.0f,
+    0.396f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 2.0f, 0.0f,
+    0.176f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 2.0f, 0.0f,
+
+    0.024f,  0.303f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 3.0f, 0.0f,
+    0.176f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 3.0f, 0.0f,
+    0.176f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 3.0f, 0.0f,
+
+    0.024f,  0.303f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 3.0f, 0.0f,
+    0.176f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.176f), mapTexture( 0.450f), 3.0f, 0.0f,
+    0.024f,  0.303f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 3.0f, 0.0f,
+
+   -0.131f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 3.0f, 0.0f,
+    0.024f,  0.303f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 3.0f, 0.0f,
+    0.024f,  0.303f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 3.0f, 0.0f,
+
+   -0.131f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 3.0f, 0.0f,
+    0.024f,  0.303f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 3.0f, 0.0f,
+   -0.131f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 3.0f, 0.0f,
+
+   -0.351f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 0.0f, 
+   -0.131f,  0.450f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 2.0f, 0.0f,
+   -0.131f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 2.0f, 0.0f,
+
+   -0.351f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 0.0f,
+   -0.131f,  0.450f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 2.0f, 0.0f,
+   -0.351f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 0.0f,
+
+    // left ear side
+   -0.462f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 2.0f, 0.0f,
+   -0.351f,  0.439f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 0.0f,
+   -0.351f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 0.0f,
+
+   -0.462f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 2.0f, 0.0f, 
+   -0.351f,  0.439f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 0.0f,
+   -0.462f,  0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 2.0f, 0.0f, 
+
+   -0.383f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 3.0f, 0.0f,
+   -0.462f,  0.253f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 3.0f, 0.0f, 
+   -0.462f,  0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 3.0f, 0.0f, 
+
+   -0.383f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 3.0f, 0.0f,
+   -0.462f,  0.253f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 3.0f, 0.0f,
+   -0.383f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 3.0f, 0.0f,
+
+
+    // left base side
+   -0.383f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f), 2.0f, 0.0f,
+   -0.383f,  0.082f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 2.0f, 0.0f,
+   -0.383f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 2.0f, 0.0f,
+
+   -0.383f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f), 2.0f, 0.0f,
+   -0.383f,  0.082f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 2.0f, 0.0f,
+   -0.383f, -0.383f, -1.00f, 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f), 2.0f, 0.0f,
 };
 
 // define OpenGL object IDs to represent the vertex array and the shader program in the GPU
@@ -211,10 +301,10 @@ void render()
 
     // set 3D transformations
     glm::mat4 matrix;
-    matrix = glm::perspective(glm::radians(60.0f), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 100.0f);
+    matrix = glm::perspective(glm::radians(30.0f), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 100.0f);
     matrix = glm::translate(matrix, glm::vec3(0.0f, 0.0f, -5.0f));
-    matrix = glm::rotate(matrix, glm::radians(abs(t) * 100), glm::vec3(0.0f, 1.0f, 0.0f));
-    // matrix = glm::rotate(matrix, -7.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // stagnant rotation
+    matrix = glm::rotate(matrix, glm::radians(abs(t) * 100), glm::vec3(1.0f, 1.0f, 1.0f)); // you spin me right round baby...
+    // matrix = glm::rotate(matrix, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f)); // stagnant rotation
     matrix = glm::scale(matrix, glm::vec3(1.0f, 1.0f, 1.0f));
     glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, glm::value_ptr(matrix));
 
