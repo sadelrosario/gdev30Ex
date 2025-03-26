@@ -303,7 +303,7 @@ void render()
     glm::mat4 matrix;
     matrix = glm::perspective(glm::radians(30.0f), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 100.0f);
     matrix = glm::translate(matrix, glm::vec3(0.0f, 0.0f, -5.0f));
-    matrix = glm::rotate(matrix, glm::radians(abs(t) * 100), glm::vec3(1.0f, 1.0f, 1.0f)); // you spin me right round baby...
+    matrix = glm::rotate(matrix, glm::radians(abs(t) * 200), glm::vec3(1.0f, 1.0f, 1.0f)); // you spin me right round baby...
     // matrix = glm::rotate(matrix, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f)); // stagnant rotation
     matrix = glm::scale(matrix, glm::vec3(1.0f, 1.0f, 1.0f));
     glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, glm::value_ptr(matrix));
