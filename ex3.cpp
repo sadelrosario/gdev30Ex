@@ -21,7 +21,25 @@
 #define WINDOW_WIDTH  1000
 #define WINDOW_HEIGHT 1000
 #define WINDOW_TITLE  "PIPIPI LOAF"
+
+using namespace std;
+
 GLFWwindow *pWindow;
+
+glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
+
+// set mouse controls
+bool firstMouse = true;
+float yaw   = -90.0f;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
+float pitch =  0.0f;
+float lastX =  800.0f / 2.0f;
+float lastY =  600.0f / 2.0f;
+float fov   =  45.0f;
+
+float deltaTime = 0.0f;	// time between current frame and last frame
+float lastFrame = 0.0f;
 
 float mapTexture(float coordinate) {
     return (coordinate / 2) + 0.5f;
@@ -287,6 +305,11 @@ bool setup()
 // called by the main function to do rendering per frame
 void render()
 {
+
+    float currentFrame = static_cast<float>(glfwGetTime());
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+
     // clear the whole frame
     glClearColor(0.0f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -300,26 +323,21 @@ void render()
     glEnable(GL_DEPTH_TEST); // enable OpenGL's hidden surface removal
 
     // set 3D transformations
-    glm::mat4 matrix;
-    matrix = glm::perspective(glm::radians(30.0f), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 100.0f);
-    matrix = glm::translate(matrix, glm::vec3(0.0f, 0.0f, -5.0f));
-    matrix = glm::rotate(matrix, glm::radians(abs(t) * 200), glm::vec3(1.0f, 1.0f, 1.0f)); // you spin me right round baby...
-    // matrix = glm::rotate(matrix, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f)); // stagnant rotation
-    matrix = glm::scale(matrix, glm::vec3(1.0f, 1.0f, 1.0f));
-    glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, glm::value_ptr(matrix));
+    // glm::mat4 matrix;
+    // matrix = glm::perspective(glm::radians(30.0f), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 100.0f);
+    // matrix = glm::translate(matrix, glm::vec3(0.0f, 0.0f, -5.0f));
+    // matrix = glm::rotate(matrix, glm::radians(abs(t) * 200), glm::vec3(1.0f, 1.0f, 1.0f)); // you spin me right round baby...
+    // // matrix = glm::rotate(matrix, glm::radians(30.0f), glm::vec3(0.0f, 1.0f, 0.0f)); // stagnant rotation
+    // matrix = glm::scale(matrix, glm::vec3(1.0f, 1.0f, 1.0f));
+    // glUniformMatrix4fv(glGetUniformLocation(shader, "matrix"), 1, GL_FALSE, glm::value_ptr(matrix));
 
-    // glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f); 
-    // glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
-    // glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
-    // glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f); 
-    // glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
-    // glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
-    // const float radius = 10.0f;
-    // float camX = sin(glfwGetTime()) * radius;
-    // float camZ = cos(glfwGetTime()) * radius;
-    // glm::mat4 view;
-    // view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
-    // glUniformMatrix4fv(glGetUniformLocation(shader, "camera"), 1, GL_FALSE, glm::value_ptr(view));
+    // camera stuff
+
+    glm::mat4 view = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    view = glm::perspective(glm::radians(60.0f), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.1f, 100.0f);    
+    view = view * glm::lookAt(cameraPos, cameraFront, cameraUp);
+    glUniformMatrix4fv(glGetUniformLocation(shader, "view"), 1, GL_FALSE, glm::value_ptr(view));
+    
     
     // ... set the active texture...
     glActiveTexture(GL_TEXTURE0);
@@ -340,6 +358,66 @@ void handleKeys(GLFWwindow* pWindow, int key, int scancode, int action, int mode
     // pressing Esc closes the window
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(pWindow, GL_TRUE);
+
+    const float cameraSpeed = 20.0f * deltaTime; // adjust accordingly
+    if (glfwGetKey(pWindow, GLFW_KEY_W) == GLFW_PRESS)
+        cameraPos += cameraSpeed * cameraFront;
+    if (glfwGetKey(pWindow, GLFW_KEY_S) == GLFW_PRESS)
+        cameraPos -= cameraSpeed * cameraFront;
+    if (glfwGetKey(pWindow, GLFW_KEY_A) == GLFW_PRESS)
+        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    if (glfwGetKey(pWindow, GLFW_KEY_D) == GLFW_PRESS)
+        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+}
+
+// glfw: whenever the mouse moves, this callback is called
+// -------------------------------------------------------
+void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
+{
+    float xpos = static_cast<float>(xposIn);
+    float ypos = static_cast<float>(yposIn);
+
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+    lastX = xpos;
+    lastY = ypos;
+
+    float sensitivity = 0.1f; // change this value to your liking
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+
+    yaw += xoffset;
+    pitch += yoffset;
+
+    // make sure that when pitch is out of bounds, screen doesn't get flipped
+    if (pitch > 89.0f)
+        pitch = 89.0f;
+    if (pitch < -89.0f)
+        pitch = -89.0f;
+
+    glm::vec3 front;
+    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    front.y = sin(glm::radians(pitch));
+    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    cameraFront = glm::normalize(front);
+}
+
+// glfw: whenever the mouse scroll wheel scrolls, this callback is called
+// ----------------------------------------------------------------------
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    fov -= (float)yoffset;
+    if (fov < 1.0f)
+        fov = 1.0f;
+    if (fov > 45.0f)
+        fov = 45.0f;
 }
 
 // handler called by GLFW when the window is resized
@@ -377,6 +455,8 @@ int main(int argc, char** argv)
 
     // set up callback functions to handle window system events
     glfwSetKeyCallback(pWindow, handleKeys);
+    glfwSetCursorPosCallback(pWindow, mouse_callback);
+    glfwSetScrollCallback(pWindow, scroll_callback);
     glfwSetFramebufferSizeCallback(pWindow, handleResize);
 
     // don't miss any momentary keypresses

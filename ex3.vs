@@ -16,10 +16,11 @@ out vec2 shaderTexCoord;
 out vec2 shaderSide;
 
 uniform mat4 matrix;
+uniform mat4 view;
 
 void main()
 {
-    gl_Position = matrix * vec4(vertexPosition.x, vertexPosition.y, vertexPosition.z, 1.0f); // 4th attribute is a homogenous coordinate (the w) 
+    gl_Position = view * vec4(vertexPosition.x, vertexPosition.y, vertexPosition.z, 1.0f); // 4th attribute is a homogenous coordinate (the w) 
     shaderColor = vertexColor;
     shaderTexCoord = vertexTexCoord;
     shaderSide = sideIndicator;
