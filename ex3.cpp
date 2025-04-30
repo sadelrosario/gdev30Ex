@@ -380,7 +380,7 @@ void render()
     
     // multiply bread
     // first (center)
-    view = glm::rotate(view, glm::radians(abs(t) * 50), glm::vec3(1.0f, 0.0f, 0.0f)); // you spin me right round baby...
+    view = glm::rotate(view, glm::radians(abs(t) * 50), glm::vec3(1.0f, 0.0f, 0.0f)); // you spin me right round baby..
     glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / (6 * sizeof(float)));
     glUniformMatrix4fv(glGetUniformLocation(shader, "view"), 1, GL_FALSE, glm::value_ptr(view)); // call after every draw arrays
 
@@ -388,7 +388,7 @@ void render()
     view = glm::rotate(view, glm::radians(abs(t) * 50), glm::vec3(-1.0f, 0.0f, 0.0f)); // revert rotate
     view = glm::translate(view, glm::vec3(-3.0f, 0.0f, 0.0f)); // revert translate origin
     view = glm::rotate(view, glm::radians(abs(t) * 50), glm::vec3(0.0f, 1.0f, 0.0f));
-    view = glm::scale(view, glm::vec3(1.5f, 1.5f, 1.5f));
+    view = glm::scale(view, glm::vec3(1.5f, 2.5f, 1.5f));
     glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / (6 * sizeof(float)));
     glUniformMatrix4fv(glGetUniformLocation(shader, "view"), 1, GL_FALSE, glm::value_ptr(view)); // call after every draw arrays
 
@@ -396,9 +396,8 @@ void render()
     view = glm::rotate(view, glm::radians(-abs(t) * 50), glm::vec3(0.0f, 1.0f, .0f)); // revert rotate
     view = glm::translate(view, glm::vec3(3.0f, 0.0f, 0.0f)); // revert translate back to origin
     view = glm::translate(view, glm::vec3(0.8f, 0.0f, 0.0f));
-    view = glm::scale(view, glm::vec3(0.5f, 0.5f, 0.5f));
+    view = glm::scale(view, glm::vec3(2.0f, 0.5f, 0.2f));
     view = glm::rotate(view, glm::radians(abs(t) * 50), glm::vec3(0.0f, 0.0f, 1.0f));
-
     glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / (6 * sizeof(float)));
     glUniformMatrix4fv(glGetUniformLocation(shader, "view"), 1, GL_FALSE, glm::value_ptr(view)); // call after every draw arrays
 
