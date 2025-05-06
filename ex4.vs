@@ -19,19 +19,20 @@ out vec2 shaderSide;
 out vec3 worldSpacePosition;
 out vec3 worldSpaceNormal;
 out vec3 objectColor;
-
+// matrices
 uniform mat4 projectionViewMatrix;
 uniform mat4 modelMatrix;
 uniform mat4 normalMatrix;
 
 void main()
 {
+    worldSpacePosition = (modelMatrix * vec4(vertexPosition, 1.0f)).xyz;
+    worldSpaceNormal = (normalMatrix * vec4(vertexNormal, 1.0f)).xyz;
     gl_Position = projectionViewMatrix * vec4(worldSpacePosition, 1.0f); // 4th attribute is a homogenous coordinate (the w) 
+    
+    // pass to fragment
     shaderColor = vertexColor;
     shaderTexCoord = vertexTexCoord;
     shaderSide = sideIndicator;
-
-    worldSpacePosition = (modelMatrix * vec4(vertexPosition, 1.0f)).xyz;
-    worldSpaceNormal = (normalMatrix * vec4(vertexNormal, 1.0f)).xyz;
     objectColor = vertexColor;
 }
