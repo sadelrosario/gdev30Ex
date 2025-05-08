@@ -74,11 +74,14 @@ glm::vec3 norm(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
     return normalVector;
 }
 
-void getNorm(float* verts, int count, int steps) {
+void getNorm(float* verts, int steps) {
+    int vertexCount = sizeof(verts) / (steps * sizeof(float));
+    cout << "WE ARE ENTERING THE GET NORM FUNCTION" << endl;
+
     // verts is the list of vertex
     // count is the total elements in verts
     // steps is the strides per row of elements in verts
-    for(int i = 0; i < count; i += 3) {
+    for(int i = 0; i < vertexCount; i += 3) {
         glm::vec3 A = glm::vec3(verts[i*steps], verts[i*steps+1], verts[i*steps+2]); 
         glm::vec3 B = glm::vec3(verts[(i+1)*steps], verts[(i+1)*steps+1], verts[(i+1)*steps+2]); 
         glm::vec3 C = glm::vec3(verts[(i+2)*steps], verts[(i+2)*steps+1], verts[(i+2)*steps+2]);
@@ -92,6 +95,55 @@ void getNorm(float* verts, int count, int steps) {
             verts[(i+j)*steps+10] = normalV.x; 
             verts[(i+j)*steps+11] = normalV.y;
             verts[(i+j)*steps+12] = normalV.z;
+            // printf("norms: (%f, %f, %f)\n", verts[(i+j)*steps+10], verts[(i+j)*steps+11], verts[(i+j)*steps+12]);
+        }
+    }
+}
+
+void smoothNorm(float* verts, int rangeMin, int rangeMax, int steps) {
+    // range = get vertices that you only want to smoothen
+    // get range by index number (e.g, getting the first vertex would mean getting vertex 1)
+    // range is inclusive
+    cout << "WE ARE ENTERING THE SMOOTHING FUNCTION\n";
+    int rangeCount = 0;
+    glm::vec3 vertCumSum = glm::vec3(0.0f, 0.0f, 0.0f);
+
+    for(int i = rangeMin; i <= rangeMax; i += 3) {
+        for(int j = 0; j < 3; j++) {
+            printf("(%f, %f, %f)\n", verts[(i+j)*steps+10], verts[(i+j)*steps+11], verts[(i+j)*steps+12]);
+            vertCumSum += glm::vec3(verts[(i+j)*steps+10], verts[(i+j)*steps+11], verts[(i+j)*steps+12]);
+        }
+        rangeCount += 3;
+    }
+
+    glm::vec3 average = vertCumSum * glm::vec3(1/rangeCount, 1/rangeCount, 1/rangeCount);
+
+    // now replace every chosen norms with the smoothen norms
+    for(int i = rangeMin; i <= rangeMax; i += 3) {
+        for(int j = 0; j < 3; j++) {
+            verts[(i+j)*steps+10] = average.x; 
+            verts[(i+j)*steps+11] = average.y;
+            verts[(i+j)*steps+12] = average.z;
+        }
+        rangeCount += 3;
+    }
+
+//     printf("vert cumsum is: (%f, %f, %f)\n", vertCumSum.x, vertCumSum.y, vertCumSum.z);
+//     cout << "range count: " << rangeCount << endl << endl;
+}
+
+void normalChecker(float* verts, int steps) {
+    int vertexCount = sizeof(verts) / (steps * sizeof(float));
+    cout << "WE ARE ENTERING THE GET CHECKER FUNCTION" << endl;
+
+    // verts is the list of vertex
+    // count is the total elements in verts
+    // steps is the strides per row of elements in verts
+    // i set the limit to 46 because the program doesn't want to print all of the 
+    // vertices lol
+    for(int i = 0; i < 46; i += 3) {
+        for(int j = 0; j < 3; j ++) {
+            printf("check: (%f, %f, %f)\n", verts[(i+j)*steps+10], verts[(i+j)*steps+11], verts[(i+j)*steps+12]);
         }
     }
 }
@@ -104,7 +156,7 @@ float vertices[] =
 {
     // position (x, y, z)  color (r, g, b)   texture coordinates (s, t)   side determinant (a, b)    normal (x, y, z)
 
-   // base
+   // base = 3
   THREEDVERT(-0.383f, 0.082f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 0.0f, 0.0f,     0.0f, 0.0f, 1.0f,
   THREEDVERT(0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 0.0f, 0.0f,     0.0f, 0.0f, 1.0f,
   THREEDVERT(0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 0.0f, 0.0f,     0.0f, 0.0f, 1.0f,
@@ -117,7 +169,7 @@ float vertices[] =
   THREEDVERT( 0.432f, -0.383f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture(-0.383f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
   THREEDVERT( 0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
 
-  // left ear
+  // left ear = 4
   THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.462f), mapTexture( 0.253f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
   THREEDVERT(-0.383f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture( 0.082f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
   THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
@@ -134,7 +186,7 @@ float vertices[] =
   THREEDVERT(-0.158f,  0.167f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.158f), mapTexture( 0.167f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
   THREEDVERT( 0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.032f), mapTexture( 0.291f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
 
-  // right ear
+  // right ear = 4
   THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
   THREEDVERT(0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
   THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
@@ -294,7 +346,7 @@ float vertices[] =
    0.432f, -0.383f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.432f, -0.383f), 2.0f, 1.0f,                     0.0f, 0.0f, 1.0f, 
    THREEDVERT(-0.383f, -0.383f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f, -0.383f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f, 
 
-}; // total verts = 105
+}; // total verts = 138
 
 // define OpenGL object IDs to represent the vertex array and the shader program in the GPU
 GLuint vao;         // vertex array object (stores the render state for our vertex array)
@@ -306,8 +358,6 @@ GLuint texture2;
 // arrays, shader programs, etc.; returns true if successful, false otherwise
 bool setup()
 {
-    
-    
     // generate the VAO and VBO objects and store their IDs in vao and vbo, respectively
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
@@ -316,7 +366,15 @@ bool setup()
     glBindVertexArray(vao);
 
     // calculate for the normals of the verts
-    getNorm(vertices, 105, 13);
+    getNorm(&vertices[1716], 13);
+
+    // check if the normals of the array have actually been changed
+    // for debugging only, can be erased if we're done with this ex :')
+    normalChecker(&vertices[1716], 13);
+
+    // smoothen chosen curved surfaces
+    smoothNorm(&vertices[1716], 66, 77, 13);
+    smoothNorm(&vertices[1716], 114, 125, 13);
 
     // upload our vertex array data to the newly-created VBO
     glBindBuffer(GL_ARRAY_BUFFER, vbo);

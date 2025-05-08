@@ -61,7 +61,7 @@ void main()
         fragmentColor *= colorB;
     }
     if(shaderSide.x == 3) {
-        fragmentColor *= colorB * darkerShade;
+        fragmentColor *= colorB; // removed multiply to darkerShade
     }
 }
 
