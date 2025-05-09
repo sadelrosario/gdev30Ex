@@ -77,7 +77,7 @@ glm::vec3 norm(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
     return normalVector;
 }
 
-void smoothNorm(float* verts, int rangeMin, int rangeMax, int steps) {
+void smoothNorm(float* verts, int rangeMin, int rangeMax, int steps, int checker) {
     // range = get vertices that you only want to smoothen
     // get range by index number (e.g, getting the first vertex would mean getting vertex 0)
     // range is inclusive
@@ -87,7 +87,7 @@ void smoothNorm(float* verts, int rangeMin, int rangeMax, int steps) {
     
     for(int j = rangeMin; j <= rangeMax; j += 3) {
         // get current vertex in the range
-        // glm::vec3 currentV(verts[j*steps], verts[j*steps+1], verts[j*steps+2]);
+        cout << verts[j*steps] << ", " << verts[j*steps+1] << ", " << verts[j*steps+2] << endl;
         // keep adding the normals of the vertices
         vertCumSum += glm::vec3(verts[(j)*steps+10], verts[(j)*steps+11], verts[(j)*steps+12]); 
         // track how much vertices already traversed in range
@@ -98,14 +98,32 @@ void smoothNorm(float* verts, int rangeMin, int rangeMax, int steps) {
 
     // normalize the average of the normals (OUTSIDE FORLOOP)
     glm::vec3 average = normalize(vertCumSum/(float)totalVerts);
+    cout << "average norm: " << average.x << ", " << average.y << ", " << average.z << endl;
 
-    // now replace every norm of every vertex in range with the smoothen norms
-    for(int i = rangeMin; i <= rangeMax; i++) {
+    if(checker == 1) {
+        for(int i = rangeMin; i <= rangeMax; i++) {
+        // glm::vec3 currentV(verts[i*steps], verts[i*steps+1], verts[i*steps+2]);
+        verts[i*steps+10] = -average.x; 
+        verts[i*steps+11] = -average.y;
+        verts[i*steps+12] = -average.z;
+        }
+    }
+
+    if(checker == 0) {
+        for(int i = rangeMin; i <= rangeMax; i++) {
         // glm::vec3 currentV(verts[i*steps], verts[i*steps+1], verts[i*steps+2]);
         verts[i*steps+10] = average.x; 
         verts[i*steps+11] = average.y;
         verts[i*steps+12] = average.z;
+        }
     }
+    // // now replace every norm of every vertex in range with the smoothen norms
+    // for(int i = rangeMin; i <= rangeMax; i++) {
+    //     // glm::vec3 currentV(verts[i*steps], verts[i*steps+1], verts[i*steps+2]);
+    //     verts[i*steps+10] = -average.x; 
+    //     verts[i*steps+11] = -average.y;
+    //     verts[i*steps+12] = -average.z;
+    // }
 
 //     printf("vert cumsum is: (%f, %f, %f)\n", vertCumSum.x, vertCumSum.y, vertCumSum.z);
 //     cout << "range count: " << rangeCount << endl << endl;
@@ -278,9 +296,12 @@ float vertices[] =
 
     // top side = 8
    // 31
-    THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture( 0.450f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
-    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.396f), mapTexture( 0.439f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture(0.450f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.396f, 0.439f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
     -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
+    // THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture( 0.450f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
+    // THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.396f), mapTexture( 0.439f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
+    // -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
    // 32
     THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture( 0.450f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
     -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
@@ -308,14 +329,21 @@ float vertices[] =
     0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f,  0.450f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
    // 38
     THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f,  0.450f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
+    0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f, 0.450f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
     0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
+
+    // THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    // 0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f,  0.450f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
+    // 0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,  0.0f, 0.0f, 1.0f,
 
     // left ear side = 4
    // 39
    THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
-   THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
+   THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
    0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
+//       THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
+//    THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
+//    0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
    // 40
    THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
    0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
@@ -401,8 +429,12 @@ bool setup()
     // smoothNorm(&vertices[1716], 66, 77, 13);
     // smoothNorm(&vertices[1716], 114, 125, 13);
     // depth
-    smoothNorm(vertices, 78, 101, 13);
-    smoothNorm(vertices, 102, 125, 13);
+    smoothNorm(vertices, 78, 101, 13, 0);
+    smoothNorm(vertices, 102, 125, 13, 0);
+    // smoothNorm(vertices, 78, 90, 13, 0);
+    // smoothNorm(vertices, 87, 93, 13, 1);
+    // smoothNorm(vertices, 93, 101, 13, 0);
+
 
     // upload our vertex array data to the newly-created VBO
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
