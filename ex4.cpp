@@ -76,26 +76,29 @@ glm::vec3 norm(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
 
 void smoothNorm(float* verts, int rangeMin, int rangeMax, int steps) {
     // range = get vertices that you only want to smoothen
-    // get range by index number (e.g, getting the first vertex would mean getting vertex 1)
+    // get range by index number (e.g, getting the first vertex would mean getting vertex 0)
     // range is inclusive
     cout << "WE ARE ENTERING THE SMOOTHING FUNCTION\n";
     glm::vec3 vertCumSum = glm::vec3(0.0f, 0.0f, 0.0f);
     int totalVerts = 0; // range of smoothing (start with one vertex)
     
-    for(int j = rangeMin; j <= rangeMax; j++) {
+    for(int j = rangeMin; j <= rangeMax; j += 3) {
         // get current vertex in the range
-        glm::vec3 currentV(verts[j*steps], verts[j*steps+1], verts[j*steps+2]);
+        // glm::vec3 currentV(verts[j*steps], verts[j*steps+1], verts[j*steps+2]);
         // keep adding the normals of the vertices
         vertCumSum += glm::vec3(verts[(j)*steps+10], verts[(j)*steps+11], verts[(j)*steps+12]); 
         // track how much vertices already traversed in range
         totalVerts ++; 
     }    
 
+    printf("total verts: %d\n", totalVerts);
+
     // normalize the average of the normals (OUTSIDE FORLOOP)
     glm::vec3 average = normalize(vertCumSum/(float)totalVerts);
 
-    // now replace every norm of every vertex in range  with the smoothen norms
+    // now replace every norm of every vertex in range with the smoothen norms
     for(int i = rangeMin; i <= rangeMax; i++) {
+        // glm::vec3 currentV(verts[i*steps], verts[i*steps+1], verts[i*steps+2]);
         verts[i*steps+10] = average.x; 
         verts[i*steps+11] = average.y;
         verts[i*steps+12] = average.z;
@@ -105,21 +108,21 @@ void smoothNorm(float* verts, int rangeMin, int rangeMax, int steps) {
 //     cout << "range count: " << rangeCount << endl << endl;
 }
 
-void normalChecker(float* verts, int steps) {
-   //  int vertexCount = sizeof(verts) / (steps * sizeof(float));
-    cout << "WE ARE ENTERING THE GET CHECKER FUNCTION" << endl;
+// void normalChecker(float* verts, int steps) {
+//    //  int vertexCount = sizeof(verts) / (steps * sizeof(float));
+//     cout << "WE ARE ENTERING THE GET CHECKER FUNCTION" << endl;
 
-    // verts is the list of vertex
-    // count is the total elements in verts
-    // steps is the strides per row of elements in verts
-    // i set the limit to 46 because the program doesn't want to print all of the 
-    // vertices lol
-    for(int i = 0; i < 46; i += 3) {
-        for(int j = 0; j < 3; j ++) {
-            printf("check: (%f, %f, %f)\n", verts[(i+j)*steps+10], verts[(i+j)*steps+11], verts[(i+j)*steps+12]);
-        }
-    }
-}
+//     // verts is the list of vertex
+//     // count is the total elements in verts
+//     // steps is the strides per row of elements in verts
+//     // i set the limit to 46 because the program doesn't want to print all of the 
+//     // vertices lol
+//     for(int i = 0; i < 46; i += 3) {
+//         for(int j = 0; j < 3; j ++) {
+//             printf("check: (%f, %f, %f)\n", verts[(i+j)*steps+10], verts[(i+j)*steps+11], verts[(i+j)*steps+12]);
+//         }
+//     }
+// }
 
 #define THREEDVERT(x, y, z) YawBack(x, y, z)[0], YawBack(x, y, z)[1], YawBack(x, y, z)[2]
 #define TWODVERT(x, y) mapTexture(YawTex(x, y)[0]), mapTexture(YawTex(x, y)[1])
@@ -230,45 +233,45 @@ float vertices[] =
     0.024f,  0.303f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.011f), mapTexture( 0.290f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
     0.207f,  0.163f,  1.00f, 1.0f, 1.0f, 1.0f, mapTexture( 0.207f), mapTexture( 0.163f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
 
-    // DEPTH
-    // right ear side = 4
-   // 23
-    THREEDVERT(0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.432f,  0.082f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    -0.383f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
-    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-   // 24
-    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    -0.383f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
-    -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f, //middle edge
-    // 25
-    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f,TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,        0.0f, 0.0f, 1.0f,
-    -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f, //middle edge
-    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
-   // 26
-    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
-   
+    // DEPTH   
 
     // (apple) bottom (jeans) = 2
-   // 27
+   // 23
    THREEDVERT(-0.383f, -0.383f, 1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f), 3.0f, 1.0f,     0.0f, 0.0f, 1.0f,
     0.432f, -0.383f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT( 0.432f, -0.383f), 3.0f, 1.0f,                               0.0f, 0.0f, 1.0f,
    -0.383f, -0.383f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f, -0.383f), 3.0f, 1.0f,                               0.0f, 0.0f, 1.0f,
-   // 28
+   // 24
    -0.383f, -0.383f,  1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f, -0.383f), 3.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
    THREEDVERT( 0.432f, -0.383f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture(-0.383f), 3.0f, 1.0f,    0.0f, 0.0f, 1.0f,
    THREEDVERT(-0.383f, -0.383f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.383f), mapTexture(-0.383f), 3.0f, 1.0f,    0.0f, 0.0f, 1.0f,
 
     // right base side = 2
-   // 29
+   // 25
     -0.383f, -0.383f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f, -0.383f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
     THREEDVERT(0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.432f,  0.082f), 2.0f, 1.0f,                   0.0f, 0.0f, 1.0f,
     THREEDVERT(0.432f, -0.383f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.432f, -0.383f), 2.0f, 1.0f,                   0.0f, 0.0f, 1.0f,
-   // 30
+   // 26
     -0.383f, -0.383f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f, -0.383f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
     -0.383f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
     THREEDVERT(0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.432f,  0.082f), 2.0f, 1.0f,                   0.0f, 0.0f, 1.0f,
+
+    // right ear side = 4
+    // 27
+    THREEDVERT(0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.432f,  0.082f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    -0.383f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    // 28
+    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    -0.383f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
+    -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f, //middle edge
+    // 29
+    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f,TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,        0.0f, 0.0f, 1.0f,
+    -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f, //middle edge
+    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
+    // 30
+    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
 
     // top side = 8
    // 31
@@ -305,7 +308,7 @@ float vertices[] =
     0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f,  0.450f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
     0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
 
-    // left ear side = 6
+    // left ear side = 4
    // 39
    THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
    THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
@@ -344,7 +347,7 @@ void getNorm(float* verts, int steps) {
     // verts is the list of vertex
     // count is the total elements in verts
     // steps is the strides per row of elements in verts
-    cout << vertexCount << endl;
+    // cout << vertexCount << endl;
     for(int i = 0; i < vertexCount; i += 3) {
         glm::vec3 A = glm::vec3(verts[i*steps], verts[i*steps+1], verts[i*steps+2]); 
         // printf("A: (%f, %f, %f)\n", A.x, A.y, A.z);
@@ -395,8 +398,8 @@ bool setup()
     // smoothNorm(&vertices[1716], 66, 77, 13);
     // smoothNorm(&vertices[1716], 114, 125, 13);
     // depth
-    smoothNorm(vertices, 114, 125, 13);
-    smoothNorm(vertices, 67, 78, 13);
+    smoothNorm(vertices, 78, 101, 13);
+    smoothNorm(vertices, 102, 125, 13);
 
     // upload our vertex array data to the newly-created VBO
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
