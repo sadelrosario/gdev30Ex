@@ -31,6 +31,9 @@ glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  7.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
 
+glm::vec3 lightPosition = glm::vec3(7.0f, 7.0f, 50.0f);
+float specularity = 32;
+
 // set mouse controls
 bool firstMouse = true;
 float yaw   = -90.0f;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
@@ -456,12 +459,15 @@ void render()
     lastFrame = currentFrame;
 
     // clear the whole frame
-    glClearColor(0.65f, 0.88f, 0.93f, 1.0f);
+    glClearColor(0.08f, 0.15f, 0.27f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     float t = glfwGetTime(); 
     glUniform1f(glGetUniformLocation(shader, "t"), t);
     glUniform3f(glGetUniformLocation(shader, "cameraPos"), cameraPos.x, cameraPos.y, cameraPos.z);
+    glUniform3f(glGetUniformLocation(shader, "lightPosition"), lightPosition.x, lightPosition.y, lightPosition.z);
+    // glUniform3f(glGetUniformLocation(shader, "lightColor"), 1.0f, 0.95f, 0.76f);
+    glUniform1f(glGetUniformLocation(shader, "specularity"), specularity);
 
     // using our shader program...
     glUseProgram(shader);
@@ -558,6 +564,35 @@ void handleKeys(GLFWwindow* pWindow, int key, int scancode, int action, int mode
         cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     if (glfwGetKey(pWindow, GLFW_KEY_D) == GLFW_PRESS)
         cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+
+    // lighting controls
+    const float lightSpeed = 300.0f * deltaTime;
+    if (glfwGetKey(pWindow, GLFW_KEY_UP) == GLFW_PRESS)
+        lightPosition.y += lightSpeed;
+    if (glfwGetKey(pWindow, GLFW_KEY_DOWN) == GLFW_PRESS)
+        lightPosition.y -= lightSpeed;
+    if (glfwGetKey(pWindow, GLFW_KEY_LEFT) == GLFW_PRESS)
+        lightPosition.x -= lightSpeed;
+    if (glfwGetKey(pWindow, GLFW_KEY_RIGHT) == GLFW_PRESS)
+        lightPosition.x += lightSpeed;
+    if (glfwGetKey(pWindow, GLFW_KEY_Z) == GLFW_PRESS)
+        lightPosition.z -= lightSpeed;
+    if (glfwGetKey(pWindow, GLFW_KEY_X) == GLFW_PRESS)
+        lightPosition.z += lightSpeed;
+
+    // specularity controls
+    float limit = 31.0f;
+    const float specularChange = 10000.0f * deltaTime;
+    if (glfwGetKey(pWindow, GLFW_KEY_Q) == GLFW_PRESS) {
+        if (specularity > limit)
+            specularity -= specularChange;
+        else
+            specularity = limit;
+    }
+    if (glfwGetKey(pWindow, GLFW_KEY_E) == GLFW_PRESS)
+        specularity += specularChange;
+
+    cout << "specularity: " << specularity << endl;
 }
 
 // glfw: whenever the mouse moves, this callback is called

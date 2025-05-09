@@ -34,5 +34,5 @@ void main()
     shaderColor = vertexColor;
     shaderTexCoord = vertexTexCoord;
     shaderSide = sideIndicator;
-    objectColor = vertexColor;
+    objectColor = shaderColor;
 }

@@ -27,41 +27,59 @@ out vec4 fragmentColor;
 vec4 colorA = texture(shaderTextureA, shaderTexCoord);
 vec4 colorB = texture(shaderTextureB, shaderTexCoord);
 
-vec3 lightPosition = vec3(7.0f, 7.0f, 7.0f); // light source position
-vec3 lightColor = vec3(1.0f, 0.95f, 0.76f); // light source color
+uniform float t; // time
+// vec3 lightPosition = vec3(clamp(abs(sin(t)), 0, 1) * 50, 7.0f, 7.0f);
+vec3 lightColor = vec3(1.0f, 0.95f, 0.76f);
+vec3 red = vec3(1.0f, 0.1f, 0.1f);
+vec3 green = vec3(0.1f, 1.0f, 0.1f);
+vec3 blue = vec3(0.1f, 0.1f, 1.0f);
+
+uniform vec3 lightPosition;
+// uniform vec3 lightColor;
+uniform float specularity;
+
+
 
 void main()
 {
+    lightColor *= mix(red, green, abs(sin(t)));
+
     vec4 shade = vec4(shaderColor.x - 0.19f, shaderColor.y - 0.33f, shaderColor.z - 0.34f, 1.0f); // solid coloring shade, not lighting related
     vec4 darkerShade = vec4(shaderColor.x - 0.39f, shaderColor.y - 0.51f, shaderColor.z - 0.52f, 1.0f); // solid coloring shade, not lighting related
+    vec3 red = vec3(shaderColor.x - 0.18f, shaderColor.y - 0.77f, shaderColor.z - 0.77f);
 
     // diffuse lighting 
     vec3 lightVector = normalize(lightPosition - worldSpacePosition); // l
     vec3 reNormalizeWorldNormal = normalize(worldSpaceNormal); // n
-    float diffuseColor = max(dot(reNormalizeWorldNormal, lightVector), 0); // Cd
+    vec3 diffuseColor = max(dot(reNormalizeWorldNormal, lightVector), 0) * lightColor; // Cd
     // ambient lighting
-    float ambientColor = 0.7f;
+    float ambientStrength = 0.1f;
+    vec3 ambientColor = ambientStrength * lightColor;
     // specular lighting
     // float reflection = lightVector - 2 * dot(reNormalizeWorldNormal, lightVector) * reNormalizeWorldNormal;
+    float specularStrength = 0.5f;
     vec3 reflectionVector = reflect(-lightVector, reNormalizeWorldNormal);
-    float shininess = 32;
-    float specularLight = max(pow(dot(reflectionVector, normalize(cameraPos - worldSpacePosition)), shininess), 0);
-    fragmentColor = vec4(((diffuseColor + ambientColor + specularLight) * lightColor), 1.0f);
+    vec3 specularLight = specularStrength * pow(max(dot(reflectionVector, normalize(cameraPos - worldSpacePosition)), 0), specularity) * lightColor;
 
-    
+    // fragmentColor = vec4(((diffuseColor + ambientColor + specularLight) * (lightColor)), 1.0f);
+    vec3 result = (ambientColor + diffuseColor + specularLight);
+
+    fragmentColor = vec4(result, 1.0f);
 
     // adding textures and solid color shading
     if(shaderSide.y == 0) {
-        fragmentColor *= colorA;
+        fragmentColor = vec4(result, 1.0f) * colorA;
     }
     if(shaderSide.y == 1) {
-        fragmentColor *= colorB;
+        fragmentColor = vec4(result, 1.0f) * colorB;
     }
     if(shaderSide.x == 2) {
-        fragmentColor *= colorB;
+        fragmentColor = vec4(result, 1.0f) * colorB;
     }
     if(shaderSide.x == 3) {
-        fragmentColor *= colorB; // removed multiply to darkerShade
+        fragmentColor = vec4(result, 1.0f) * colorB; // removed multiply to darkerShade
     }
+    
+    // fragmentColor = vec4(result, 0.1f);
 }
 
