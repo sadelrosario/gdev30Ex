@@ -45,7 +45,7 @@ void main()
     // float reflection = lightVector - 2 * dot(reNormalizeWorldNormal, lightVector) * reNormalizeWorldNormal;
     vec3 reflectionVector = reflect(-lightVector, reNormalizeWorldNormal);
     float shininess = 32;
-    float specularLight = max(pow(dot(reflectionVector, vec3(0.0f, 0.0f, 1.0f)), shininess), 0);
+    float specularLight = max(pow(dot(reflectionVector, cameraPos), shininess), 0);
     fragmentColor = vec4(((diffuseColor + ambientColor + specularLight) * lightColor), 1.0f);
 
     
