@@ -81,24 +81,24 @@ void smoothNorm(float* verts, int rangeMin, int rangeMax, int steps, int checker
     // range = get vertices that you only want to smoothen
     // get range by index number (e.g, getting the first vertex would mean getting vertex 0)
     // range is inclusive
-    cout << "WE ARE ENTERING THE SMOOTHING FUNCTION\n";
+    // cout << "WE ARE ENTERING THE SMOOTHING FUNCTION\n";
     glm::vec3 vertCumSum = glm::vec3(0.0f, 0.0f, 0.0f);
     int totalVerts = 0; // range of smoothing (start with one vertex)
     
     for(int j = rangeMin; j <= rangeMax; j += 3) {
         // get current vertex in the range
-        cout << verts[j*steps] << ", " << verts[j*steps+1] << ", " << verts[j*steps+2] << endl;
+        // cout << verts[j*steps] << ", " << verts[j*steps+1] << ", " << verts[j*steps+2] << endl;
         // keep adding the normals of the vertices
         vertCumSum += glm::vec3(verts[(j)*steps+10], verts[(j)*steps+11], verts[(j)*steps+12]); 
         // track how much vertices already traversed in range
         totalVerts ++; 
     }    
 
-    printf("total verts: %d\n", totalVerts);
+    // printf("total verts: %d\n", totalVerts);
 
     // normalize the average of the normals (OUTSIDE FORLOOP)
     glm::vec3 average = normalize(vertCumSum/(float)totalVerts);
-    cout << "average norm: " << average.x << ", " << average.y << ", " << average.z << endl;
+    // cout << "average norm: " << average.x << ", " << average.y << ", " << average.z << endl;
 
     if(checker == 1) {
         for(int i = rangeMin; i <= rangeMax; i++) {
@@ -624,7 +624,7 @@ void handleKeys(GLFWwindow* pWindow, int key, int scancode, int action, int mode
     if (glfwGetKey(pWindow, GLFW_KEY_E) == GLFW_PRESS)
         specularity += specularChange;
 
-    cout << "specularity: " << specularity << endl;
+    // cout << "specularity: " << specularity << endl;
 }
 
 // glfw: whenever the mouse moves, this callback is called
