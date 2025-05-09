@@ -27,7 +27,7 @@ out vec4 fragmentColor;
 vec4 colorA = texture(shaderTextureA, shaderTexCoord);
 vec4 colorB = texture(shaderTextureB, shaderTexCoord);
 
-vec3 lightPosition = vec3(9.0f, 9.0f, 9.0f); // light source position
+vec3 lightPosition = vec3(7.0f, 7.0f, 7.0f); // light source position
 vec3 lightColor = vec3(1.0f, 0.95f, 0.76f); // light source color
 
 void main()
@@ -45,7 +45,7 @@ void main()
     // float reflection = lightVector - 2 * dot(reNormalizeWorldNormal, lightVector) * reNormalizeWorldNormal;
     vec3 reflectionVector = reflect(-lightVector, reNormalizeWorldNormal);
     float shininess = 32;
-    float specularLight = max(pow(dot(reflectionVector, cameraPos), shininess), 0);
+    float specularLight = max(pow(dot(reflectionVector, normalize(cameraPos - worldSpacePosition)), shininess), 0);
     fragmentColor = vec4(((diffuseColor + ambientColor + specularLight) * lightColor), 1.0f);
 
     

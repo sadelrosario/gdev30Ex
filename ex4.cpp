@@ -79,27 +79,26 @@ void smoothNorm(float* verts, int rangeMin, int rangeMax, int steps) {
     // get range by index number (e.g, getting the first vertex would mean getting vertex 1)
     // range is inclusive
     cout << "WE ARE ENTERING THE SMOOTHING FUNCTION\n";
-    int rangeCount = 0;
     glm::vec3 vertCumSum = glm::vec3(0.0f, 0.0f, 0.0f);
+    int totalVerts = 0; // range of smoothing (start with one vertex)
+    
+    for(int j = rangeMin; j <= rangeMax; j++) {
+        // get current vertex in the range
+        glm::vec3 currentV(verts[j*steps], verts[j*steps+1], verts[j*steps+2]);
+        // keep adding the normals of the vertices
+        vertCumSum += glm::vec3(verts[(j)*steps+10], verts[(j)*steps+11], verts[(j)*steps+12]); 
+        // track how much vertices already traversed in range
+        totalVerts ++; 
+    }    
 
-    for(int i = rangeMin; i <= rangeMax; i += 3) {
-        for(int j = 0; j < 3; j++) {
-            printf("(%f, %f, %f)\n", verts[(i+j)*steps+10], verts[(i+j)*steps+11], verts[(i+j)*steps+12]);
-            vertCumSum += glm::vec3(verts[(i+j)*steps+10], verts[(i+j)*steps+11], verts[(i+j)*steps+12]);
-        }
-        rangeCount += 3;
-    }
+    // normalize the average of the normals (OUTSIDE FORLOOP)
+    glm::vec3 average = normalize(vertCumSum/(float)totalVerts);
 
-    glm::vec3 average = vertCumSum * glm::vec3(1/rangeCount, 1/rangeCount, 1/rangeCount);
-
-    // now replace every chosen norms with the smoothen norms
-    for(int i = rangeMin; i <= rangeMax; i += 3) {
-        for(int j = 0; j < 3; j++) {
-            verts[(i+j)*steps+10] = average.x; 
-            verts[(i+j)*steps+11] = average.y;
-            verts[(i+j)*steps+12] = average.z;
-        }
-        rangeCount += 3;
+    // now replace every norm of every vertex in range  with the smoothen norms
+    for(int i = rangeMin; i <= rangeMax; i++) {
+        verts[i*steps+10] = average.x; 
+        verts[i*steps+11] = average.y;
+        verts[i*steps+12] = average.z;
     }
 
 //     printf("vert cumsum is: (%f, %f, %f)\n", vertCumSum.x, vertCumSum.y, vertCumSum.z);
@@ -120,39 +119,6 @@ void normalChecker(float* verts, int steps) {
             printf("check: (%f, %f, %f)\n", verts[(i+j)*steps+10], verts[(i+j)*steps+11], verts[(i+j)*steps+12]);
         }
     }
-}
-
-void normalAverage(float* verts, int steps, int indx1, int indx2) {
-    glm::vec3 norm1 = glm::vec3(verts[indx1*steps+10], verts[indx1*steps+11], verts[indx1*steps+12]); // get normal value of this vertex
-    glm::vec3 norm2 = glm::vec3(verts[indx2*steps+10], verts[indx2*steps+11], verts[indx2*steps+12]); // get normal value of this vertex
-
-    glm::vec3 normAve = (norm1 + norm2) * glm::vec3(1/2, 1/2, 1/2); // average the normal value of this vertex
-
-    cout << verts[indx1*steps+12] << endl;
-
-    verts[indx1*steps+10] = normAve.x; // reassigned the normal values of this vertex x 
-    verts[indx1*steps+11] = normAve.y; // reassigned the normal values of this vertex y
-    verts[indx1*steps+12] = normAve.z; // reassigned the normal values of this vertex z
-
-    verts[indx2*steps+10] = normAve.x; // reassigned the normal values of this vertex x 
-    verts[indx2*steps+11] = normAve.y; // reassigned the normal values of this vertex y
-    verts[indx2*steps+12] = normAve.z; // reassigned the normal values of this vertex z
-
-    
-    // for(int i = 0; i < 3; i ++) {
-    //     verts[indx1*3*steps+i+10] = normAve.x; // reassigned the normal values of this vertex x 
-    //     verts[indx1*3*steps+i+11] = normAve.y; // reassigned the normal values of this vertex y
-    //     verts[indx1*3*steps+i+12] = normAve.z; // reassigned the normal values of this vertex z
-    // }
-
-    // cout << verts[indx1*steps+12] << endl;
-
-    // for(int i = 0; i < 3; i ++) {
-    //     verts[indx2*3*steps+i+10] = normAve.x; // reassigned the normal values of this vertex x 
-    //     verts[indx2*3*steps+i+11] = normAve.y; // reassigned the normal values of this vertex y
-    //     verts[indx2*3*steps+i+12] = normAve.z; // reassigned the normal values of this vertex z
-    // }
-    
 }
 
 #define THREEDVERT(x, y, z) YawBack(x, y, z)[0], YawBack(x, y, z)[1], YawBack(x, y, z)[2]
@@ -196,7 +162,7 @@ float vertices[] =
   THREEDVERT( 0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.032f), mapTexture( 0.291f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
 
   // right ear = 4
-   // 8
+   // 8 (tip)
   THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.396f), mapTexture( 0.439f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
   THREEDVERT(0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.432f), mapTexture( 0.082f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
   THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.505f), mapTexture( 0.253f), 1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
@@ -274,14 +240,15 @@ float vertices[] =
     THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
     -0.383f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
     -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f, //middle edge
-   // 25
-    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
-   // 26
+    // 25
     THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f,TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,        0.0f, 0.0f, 1.0f,
     -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f, //middle edge
     -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
+   // 26
+    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
+   
 
     // (apple) bottom (jeans) = 2
    // 27
@@ -320,6 +287,7 @@ float vertices[] =
     THREEDVERT(0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.024f), mapTexture( 0.303f), 3.0f, 1.0f,     0.0f, 0.0f, 1.0f,
     -0.131f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.131f,  0.450f), 3.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
      0.024f,  0.303f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT( 0.024f,  0.303f), 3.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
+
    // 35
     THREEDVERT(-0.131f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
     THREEDVERT( 0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
@@ -426,7 +394,9 @@ bool setup()
     // smoothen chosen curved surfaces
     // smoothNorm(&vertices[1716], 66, 77, 13);
     // smoothNorm(&vertices[1716], 114, 125, 13);
-    normalAverage(&vertices[1716], 13, 24, 26);
+    // depth
+    smoothNorm(vertices, 114, 125, 13);
+    smoothNorm(vertices, 67, 78, 13);
 
     // upload our vertex array data to the newly-created VBO
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
