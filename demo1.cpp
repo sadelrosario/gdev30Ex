@@ -46,9 +46,9 @@ float vertices[] =
 
 
     // red
-    - 1.0f,  0.0f, 0.0f,  1.0f, 0.0f, 0.0f, mapTexture(-1.0f ), mapTexture( 0.0f), 1.0f, 1.0f, 
-    - 1.0f, -1.0f, 0.0f,  1.0f, 0.0f, 0.0f, mapTexture(-1.0f ), mapTexture(-1.0f), 1.0f, 1.0f, 
-     1.0f,   0.0f, 0.0f,  1.0f, 0.0f, 0.0f, mapTexture( 1.0f ), mapTexture( 0.0f), 1.0f, 1.0f,
+    - 1.0f,  0.0f, 0.0f,  0.0f, 0.0f, 0.0f, mapTexture(-1.0f ), mapTexture( 0.0f), 1.0f, 1.0f, 
+    - 1.0f, -1.0f, 0.0f,  0.0f, 0.0f, 0.0f, mapTexture(-1.0f ), mapTexture(-1.0f), 1.0f, 1.0f, 
+     1.0f,   0.0f, 0.0f,  0.0f, 0.0f, 0.0f, mapTexture( 1.0f ), mapTexture( 0.0f), 1.0f, 1.0f,
 
     // // blue
     // - 1.0f, 1.0f,  0.0f, 0.0f, 0.0f, 1.0f, mapTexture(- 1.0f), mapTexture(1.0f),
@@ -81,7 +81,7 @@ float vertices[] =
    
 };
 
-float screenVertices[] =
+float screenVertices[] = // this is the screen
 {
 	// Coords    // texCoords
 	 1.0f, -1.0f,  1.0f, 0.0f,
@@ -111,6 +111,7 @@ GLuint screenVBO, screenVAO;
 GLuint fbShader;
 GLuint stencilShader;
 GLuint bloomTexture;
+GLuint particle;
 
 void drawScene() 
 {
@@ -138,7 +139,7 @@ bool setup()
     // load textures 
     texture = gdevLoadTexture("pepe.png", GL_REPEAT, true, true);
     if (! texture) return false;
-    texture2 = gdevLoadTexture("crust.jpg", GL_REPEAT, true, true);
+    texture2 = gdevLoadTexture("childe.jpg", GL_REPEAT, true, true);
     if (! texture2) return false;
 
     
@@ -254,6 +255,9 @@ bool setup()
     if (! shader)
         return false;
 
+    particle = gdevLoadShader("particle.vs", "particle.fs");
+    if (! shader)
+        return false;
 
 
     // // blur fragment shader
@@ -326,21 +330,22 @@ void render()
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // bg color WHITE
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
-
-
-    glUseProgram(shader);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture);
-    glUniform1i(glGetUniformLocation(shader, "shaderTextureA"), 0);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture2);
-    glUniform1i(glGetUniformLocation(shader, "shaderTextureB"), 1);
-
+    // framebuffer
     glUseProgram(fbShader);
-    glActiveTexture(GL_TEXTURE7);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, framebufferTexture);
-    glUniform1i(glGetUniformLocation(fbShader, "screenTexture"), 7);
-    glUniform1i(glGetUniformLocation(program, "screenTexture"), 7);
+    glUniform1i(glGetUniformLocation(fbShader, "screenTexture"), 0);
+    // framebuffer
+    glUseProgram(program);
+    glUniform1i(glGetUniformLocation(program, "screenTexture"), 0);
+    // framebuffer
+    glUseProgram(shader);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glUniform1i(glGetUniformLocation(shader, "shaderTextureA"), 1);
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    glUniform1i(glGetUniformLocation(shader, "shaderTextureB"), 2);
 
     drawScene();
 
@@ -351,10 +356,11 @@ void render()
     int amount = 2; // minimum of 2
     // use extra shader for blur...
     glUseProgram(program);
+    // Create Ping Pong Framebuffers for repetitive blurring
     for(int i = 0; i < amount; i++)
     {
         glBindFramebuffer(GL_FRAMEBUFFER, pingpongFBO[horizontal]);
-        glUniform1f(glGetUniformLocation(program, "horizontal"), horizontal);
+        glUniform1i(glGetUniformLocation(program, "horizontal"), horizontal);
 
         if(first_iteration)
         {
@@ -370,16 +376,9 @@ void render()
         glBindVertexArray(screenVAO);
         glDisable(GL_DEPTH_TEST);
         glDrawArrays(GL_TRIANGLES, 0, 6);
-
         // switch between horizontal and vertical blurring
         horizontal = !horizontal;
     }
-
-    glActiveTexture(GL_TEXTURE3);
-    glBindTexture(GL_TEXTURE_2D, pingpongBuffer[!horizontal]);
-    glUniform1i(glGetUniformLocation(fbShader, "bloomTexture"), 3);
-
-
 
 
     // bind default framebuffer
@@ -388,12 +387,23 @@ void render()
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glUseProgram(fbShader); // use the post processing shader (after using all shaders)
+    // 
     glBindVertexArray(screenVAO); // bind screen rectangle vertex array
     glDisable(GL_DEPTH_TEST); // prevents framebuffer rectangle from being discarded
+    // final textures
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, framebufferTexture);
+    glActiveTexture(GL_TEXTURE3);
+    glBindTexture(GL_TEXTURE_2D, pingpongBuffer[!horizontal]);
+    glUniform1i(glGetUniformLocation(fbShader, "bloomTexture"), 3);
+    
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
     // glActiveTexture(GL_TEXTURE0);
     // glBindTexture(GL_TEXTURE_2D, framebufferTexture);
     // glActiveTexture(GL_TEXTURE1);
     // glBindTexture(GL_TEXTURE_2D, pingpongBuffer[!horizontal]);
+
     // order of active does  matter ????
 
     
@@ -407,7 +417,7 @@ void render()
 
 
 
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    // 
 
 
 }

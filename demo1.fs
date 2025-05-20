@@ -25,6 +25,7 @@ layout (location = 1) out vec4 bloomColor;
 void main()
 {
    vec4 colorA = texture(shaderTextureA, shaderTexCoord);
+   vec4 colorB = texture(shaderTextureB, shaderTexCoord);
    // fragmentColor = vec4(shaderColor, 1.0f) + colorA;
    if (shaderSetter.x == 1)
    {
@@ -32,20 +33,20 @@ void main()
    }
    else
    {
-      fragmentColor = vec4(shaderColor, 1.0f) ;
+      fragmentColor = vec4(shaderColor, 1.0f) + colorB;
    }
 
 
 	// Make the red lines of the lava brighter
-	if(fragmentColor.r > 0.05f)
+	if (fragmentColor.r == 1)
 		fragmentColor.r *= 5.0f;
 
 	// Calculate brightness by adding up all the channels with different weights each
 	float brightness = dot(fragmentColor.rgb, vec3(0.2126f, 0.7152f, 0.0722f));
-   if(brightness > 0.15f)
+   if(fragmentColor.r == 1)
         bloomColor = vec4(fragmentColor.rgb, 1.0f); // has blur 
     else
-        bloomColor = vec4(0.0f, 0.0f, 0.0f, 1.0f); // no blur
+        bloomColor = vec4(0.0f, 0.0f, 0.0f, 1.0f) + colorB; // no blur
 
    // float brightness = dot(fragmentColor.rgb, vec3(0.2126, 0.7152, 0.0722));
    // if(brightness > 0.15)
