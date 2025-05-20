@@ -4,7 +4,6 @@ lib-mingw-w64/
 lib-universal/
 src/
 demo0.*
-demo1.*
 demo2.*
 demo2b.cpp
 *.exe
