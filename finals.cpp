@@ -282,59 +282,59 @@ float vertices[] =
 
     // right ear side = 4
     // 27
-    THREEDVERT(0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.432f,  0.082f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.432f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.432f,  0.082f), 3.0f, 3.0f,       0.0f, 0.0f, 1.0f,
     -0.383f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
-    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 3.0f,       0.0f, 0.0f, 1.0f,
     // 28
-    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    -0.383f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
-    -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 3.0f, 1.0f,                  0.0f, 0.0f, 1.0f, //middle edge
+    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 3.0f,       0.0f, 0.0f, 1.0f,
+    -0.383f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 3.0f,                  0.0f, 0.0f, 1.0f,
+    -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 3.0f, 3.0f,                  0.0f, 0.0f, 1.0f, //middle edge
     // 29
-    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f,TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,        0.0f, 0.0f, 1.0f,
-    -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f, //middle edge
-    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f,TWODVERT(0.505f,  0.253f), 2.0f, 3.0f,        0.0f, 0.0f, 1.0f,
+    -0.462f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 3.0f,                  0.0f, 0.0f, 1.0f, //middle edge
+    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 3.0f,                  0.0f, 0.0f, 1.0f,
     // 30
-    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                  0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 3.0f,       0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.505f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 2.0f, 3.0f,       0.0f, 0.0f, 1.0f,
+    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 3.0f,                  0.0f, 0.0f, 1.0f,
 
     // top side = 8
    // 31
-    THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture(0.450f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
-    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.396f, 0.439f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
-    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture(0.450f), 2.0f, 3.0f,     0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(0.396f, 0.439f), 2.0f, 3.0f,     0.0f, 0.0f, 1.0f,
+    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 3.0f,                              0.0f, 0.0f, 1.0f,
     // THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture( 0.450f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
     // THREEDVERT(0.396f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.396f), mapTexture( 0.439f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
     // -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
    // 32
-    THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture( 0.450f), 2.0f, 1.0f,     0.0f, 0.0f, 1.0f,
-    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
-    -0.131f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.131f,  0.450f), 2.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture( 0.450f), 2.0f, 3.0f,     0.0f, 0.0f, 1.0f,
+    -0.351f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 3.0f,                              0.0f, 0.0f, 1.0f,
+    -0.131f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.131f,  0.450f), 2.0f, 3.0f,                              0.0f, 0.0f, 1.0f,
    // 33
-    THREEDVERT(0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.024f), mapTexture( 0.303f), 3.0f, 1.0f,     0.0f, 0.0f, 1.0f,
-    THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture( 0.450f), 3.0f, 1.0f,     0.0f, 0.0f, 1.0f,
-    -0.131f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.131f,  0.450f), 3.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.024f), mapTexture( 0.303f), 3.0f, 3.0f,     0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.176f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.176f), mapTexture( 0.450f), 3.0f, 3.0f,     0.0f, 0.0f, 1.0f,
+    -0.131f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.131f,  0.450f), 3.0f, 3.0f,                              0.0f, 0.0f, 1.0f,
    // 34
-    THREEDVERT(0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.024f), mapTexture( 0.303f), 3.0f, 1.0f,     0.0f, 0.0f, 1.0f,
-    -0.131f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.131f,  0.450f), 3.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
-     0.024f,  0.303f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT( 0.024f,  0.303f), 3.0f, 1.0f,                              0.0f, 0.0f, 1.0f,
+    THREEDVERT(0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(0.024f), mapTexture( 0.303f), 3.0f, 3.0f,     0.0f, 0.0f, 1.0f,
+    -0.131f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(-0.131f,  0.450f), 3.0f, 3.0f,                              0.0f, 0.0f, 1.0f,
+     0.024f,  0.303f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT( 0.024f,  0.303f), 3.0f, 3.0f,                              0.0f, 0.0f, 1.0f,
 
    // 35
-    THREEDVERT(-0.131f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    THREEDVERT( 0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    0.024f,  0.303f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.024f,  0.303f), 3.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
+    THREEDVERT(-0.131f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 3.0f, 3.0f,       0.0f, 0.0f, 1.0f,
+    THREEDVERT( 0.024f,  0.303f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture( 0.024f), mapTexture( 0.303f), 3.0f, 3.0f,       0.0f, 0.0f, 1.0f,
+    0.024f,  0.303f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.024f,  0.303f), 3.0f, 3.0f,                                    0.0f, 0.0f, 1.0f,
    // 36
-    THREEDVERT(-0.131f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 3.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-     0.024f,  0.303f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT( 0.024f,  0.303f), 3.0f, 1.0f,                                  0.0f, 0.0f, 1.0f,
-     0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT( 0.176f,  0.450f), 3.0f, 1.0f,                                  0.0f, 0.0f, 1.0f,
+    THREEDVERT(-0.131f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 3.0f, 3.0f,       0.0f, 0.0f, 1.0f,
+     0.024f,  0.303f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT( 0.024f,  0.303f), 3.0f, 3.0f,                                  0.0f, 0.0f, 1.0f,
+     0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT( 0.176f,  0.450f), 3.0f, 3.0f,                                  0.0f, 0.0f, 1.0f,
    // 37
-    THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    THREEDVERT(-0.131f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f,  0.450f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
+    THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 3.0f,       0.0f, 0.0f, 1.0f,
+    THREEDVERT(-0.131f,  0.450f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.131f), mapTexture( 0.450f), 2.0f, 3.0f,       0.0f, 0.0f, 1.0f,
+    0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f,  0.450f), 2.0f, 3.0f,                                    0.0f, 0.0f, 1.0f,
    // 38
-    THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
-    0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f, 0.450f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
-    0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
+    THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 3.0f,       0.0f, 0.0f, 1.0f,
+    0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f, 0.450f), 2.0f, 3.0f,                                    0.0f, 0.0f, 1.0f,
+    0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 3.0f,                                    0.0f, 0.0f, 1.0f,
 
     // THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 1.0f,       0.0f, 0.0f, 1.0f,
     // 0.176f,  0.450f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.176f,  0.450f), 2.0f, 1.0f,                                    0.0f, 0.0f, 1.0f,
@@ -342,24 +342,24 @@ float vertices[] =
 
     // left ear side = 4
    // 39
-   THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
-   THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
-   0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
+   THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 3.0f,      0.0f, 0.0f, 1.0f,
+   THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, mapTexture(-0.351f), mapTexture( 0.439f), 2.0f, 3.0f,      0.0f, 0.0f, 1.0f,
+   0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 3.0f,                     0.0f, 0.0f, 1.0f,
 //       THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
 //    THREEDVERT(-0.351f,  0.439f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.351f,  0.439f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
 //    0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
    // 40
-   THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 1.0f,      0.0f, 0.0f, 1.0f,
-   0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
-   0.505f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 2.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
+   THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 2.0f, 3.0f,      0.0f, 0.0f, 1.0f,
+   0.396f,  0.439f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.396f,  0.439f), 2.0f, 3.0f,                     0.0f, 0.0f, 1.0f,
+   0.505f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 2.0f, 3.0f,                     0.0f, 0.0f, 1.0f,
    // 41
-   THREEDVERT(-0.383f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 1.0f,      0.0f, 0.0f, 1.0f,
-   THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 3.0f, 1.0f,      0.0f, 0.0f, 1.0f,
-   0.505f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
+   THREEDVERT(-0.383f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 3.0f,      0.0f, 0.0f, 1.0f,
+   THREEDVERT(-0.462f,  0.253f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.462f,  0.253f), 3.0f, 3.0f,      0.0f, 0.0f, 1.0f,
+   0.505f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 3.0f,                     0.0f, 0.0f, 1.0f,
    // 42
-   THREEDVERT(-0.383f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 1.0f,      0.0f, 0.0f, 1.0f,
-   0.505f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
-   0.432f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.432f,  0.082f), 3.0f, 1.0f,                     0.0f, 0.0f, 1.0f,
+   THREEDVERT(-0.383f,  0.082f,  1.00f), 1.0f, 1.0f, 1.0f, TWODVERT(-0.383f,  0.082f), 3.0f, 3.0f,      0.0f, 0.0f, 1.0f,
+   0.505f,  0.253f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.505f,  0.253f), 3.0f, 3.0f,                     0.0f, 0.0f, 1.0f,
+   0.432f,  0.082f, 1.00f, 1.0f, 1.0f, 1.0f, TWODVERT(0.432f,  0.082f), 3.0f, 3.0f,                     0.0f, 0.0f, 1.0f,
 
     // left base side = 2
    // 43
@@ -548,13 +548,24 @@ float cake[] =
 
 float square[] =
 {
-    -0.50f, -0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture( -0.50f ), mapTexture( -0.50f ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-     0.50f, -0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture(  0.50f ), mapTexture( -0.50f ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-    -0.50f,  0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture( -0.50f ), mapTexture(  0.50f ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+    -0.80f, -0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture( -0.80f ), mapTexture( -0.80f ),   7.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+     0.80f, -0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture(  0.80f ), mapTexture( -0.80f ),   7.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+    -0.80f,  0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture( -0.80f ), mapTexture(  0.80f ),   7.0f, 5.0f,   0.0f, 0.0f, 1.0f,
 
-     0.50f,  0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture(  0.50f ), mapTexture(  0.50f ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-    -0.50f,  0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture( -0.50f ), mapTexture(  0.50f ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-     0.50f, -0.50f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture(  0.50f ), mapTexture( -0.50f ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+     0.80f,  0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture(  0.80f ), mapTexture(  0.80f ),   7.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+    -0.80f,  0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture( -0.80f ), mapTexture(  0.80f ),   7.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+     0.80f, -0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture(  0.80f ), mapTexture( -0.80f ),   7.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+};
+
+float square2[] =
+{
+    -0.80f, -0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture( -0.80f ), mapTexture( -0.80f ),   8.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+     0.80f, -0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture(  0.80f ), mapTexture( -0.80f ),   8.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+    -0.80f,  0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture( -0.80f ), mapTexture(  0.80f ),   8.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+
+     0.80f,  0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture(  0.80f ), mapTexture(  0.80f ),   8.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+    -0.80f,  0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture( -0.80f ), mapTexture(  0.80f ),   8.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+     0.80f, -0.80f, 0.00f,   1.0f, 1.0f, 1.0f,   mapTexture(  0.80f ), mapTexture( -0.80f ),   8.0f, 5.0f,   0.0f, 0.0f, 1.0f,
 };
 
 // we are going to reuse some values from the cake, but we will also reset some
@@ -793,33 +804,49 @@ float cylinder[] =
     pX, pY, -1.0f,                                   1.0f, 1.0f, 1.0f,   mapTexture(       pX        ), mapTexture(       pY        ),   6.0f, 3.0f,   0.0f, 0.0f, 1.0f,
     derotateX(pX, 12), derotateY(pY, 12), -1.0f,     1.0f, 1.0f, 1.0f,   mapTexture(derotateX(pX, 12)), mapTexture(derotateY(pY, 12)),   6.0f, 3.0f,   0.0f, 0.0f, 1.0f,
 
-
-    //slice cut-off
-    // prevX, prevY, 1.0f,                                    1.0f, 1.0f, 1.0f,   mapTexture( prevX ), mapTexture( prevY ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-    // originX, originY,  1.0f,                               1.0f, 1.0f, 1.0f,   mapTexture(originX), mapTexture(originY),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f, 
-    // originX, originY, -1.0f,                               1.0f, 1.0f, 1.0f,   mapTexture(originX), mapTexture(originY),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f, 
-
-    // prevX, prevY, 1.0f,                                    1.0f, 1.0f, 1.0f,   mapTexture( prevX ), mapTexture( prevY ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-    // originX, originY, -1.0f,                               1.0f, 1.0f, 1.0f,   mapTexture(originX), mapTexture(originY),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f, 
-    // prevX, prevY, -1.0f,                                   1.0f, 1.0f, 1.0f,   mapTexture( prevX ), mapTexture( prevY ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-
-    // //6
-    // prevX,  prevY,  1.0f,                                  1.0f, 1.0f, 1.0f,   mapTexture( prevX ), mapTexture( prevY ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-    // originX, originY,  1.0f,                               1.0f, 1.0f, 1.0f,   mapTexture(originX), mapTexture(originY),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f, 
-    // rotateX(&prevX, 6),  rotateY(&prevY, 6),  1.0f,        1.0f, 1.0f, 1.0f,   mapTexture( prevX ), mapTexture( prevY ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-
-
-
-    // prevX,  prevY,  1.0f,                                  1.0f, 1.0f, 1.0f,   mapTexture( prevX ), mapTexture( prevY ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-    // originX, originY,  1.0f,                               1.0f, 1.0f, 1.0f,   mapTexture(originX), mapTexture(originY),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f, 
-    // rotateX(&prevX, 7),  rotateY(&prevY, 7),  1.0f,        1.0f, 1.0f, 1.0f,   mapTexture( prevX ), mapTexture( prevY ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-
-    // prevX,  prevY,  1.0f,                                  1.0f, 1.0f, 1.0f,   mapTexture( prevX ), mapTexture( prevY ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
-    // originX, originY,  1.0f,                               1.0f, 1.0f, 1.0f,   mapTexture(originX), mapTexture(originY),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f, 
-    // rotateX(&prevX, 8),  rotateY(&prevY, 8),  1.0f,        1.0f, 1.0f, 1.0f,   mapTexture( prevX ), mapTexture( prevY ),   5.0f, 5.0f,   0.0f, 0.0f, 1.0f,
 };
 
-// int vertexCount = sizeof(vertices) / (13 * sizeof(float));
+// commented out; for reference only
+// float radius = 1.0f;
+// int subdivision = 12; 
+// const float angle = (360.0f / float(subdivision)); --> retain
+// float originX = 0.0f; --> retain
+// float originY = 0.0f; --> retain
+// float prevX = originX;
+// float prevY = originY + radius;
+
+float r1 = 1.0f; // big circle
+float r2 = 0.7f; // small circle
+float p1X = originX; // big
+float p1Y = originY + r1; // big
+float p2X = originX; // small (not much of a difference)
+float p2Y = originY + r2; // small
+
+float plate[] = 
+{
+    //1
+    p1X,  p1Y,  1.0f,                                  1.0f, 1.0f, 1.0f,   mapTexture( p1X ), mapTexture( p1Y ),   6.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+    originX, originY,  1.0f,                           1.0f, 1.0f, 1.0f,   mapTexture(originX), mapTexture(originY),   4.0f, 5.0f,   0.0f, 0.0f, 1.0f, 
+    rotateX(&p1X, 1),  rotateY(&p1Y, 1),  1.0f,        1.0f, 1.0f, 1.0f,   mapTexture( p1X ), mapTexture( p1Y ),   6.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+    
+    originX, originY,  -1.0f,                          1.0f, 1.0f, 1.0f,   mapTexture(originX), mapTexture(originY),   4.0f, 5.0f,   0.0f, 0.0f, 1.0f, 
+    p2X,  p2Y,  -1.0f,                                 1.0f, 1.0f, 1.0f,   mapTexture(  p2X  ), mapTexture(  p2X  ),   6.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+    rotateX(&p2X, 1),  rotateY(&p2Y, 1),  -1.0f,       1.0f, 1.0f, 1.0f,   mapTexture(  p2X  ), mapTexture(  p2Y  ),   6.0f, 5.0f,   0.0f, 0.0f, 1.0f,
+
+    derotateX(p1X, 1), derotateY(p1Y, 1), 1.0f,        1.0f, 1.0f, 1.0f,   mapTexture(derotateX(p1X, 1)), mapTexture(derotateY(p1Y, 1)),   6.0f, 3.0f,   0.0f, 0.0f, 1.0f,
+    p1X, p1Y,  1.0f,                                   1.0f, 1.0f, 1.0f,   mapTexture(       p1X       ), mapTexture(       p1Y       ),   6.0f, 3.0f,   0.0f, 0.0f, 1.0f,
+    p2X, p2Y, -1.0f,                                   1.0f, 1.0f, 1.0f,   mapTexture(       p2X       ), mapTexture(       p2Y       ),   6.0f, 3.0f,   0.0f, 0.0f, 1.0f,
+
+    derotateX(p1X, 1), derotateY(p1Y, 1), 1.0f,        1.0f, 1.0f, 1.0f,   mapTexture(derotateX(p1X, 1)), mapTexture(derotateY(p1Y, 1)),   6.0f, 3.0f,   0.0f, 0.0f, 1.0f,
+    p2X, p2Y, -1.0f,                                   1.0f, 1.0f, 1.0f,   mapTexture(       p2X       ), mapTexture(       p2Y       ),   6.0f, 3.0f,   0.0f, 0.0f, 1.0f,
+    derotateX(p2X, 1), derotateY(p2Y, 1), -1.0f,       1.0f, 1.0f, 1.0f,   mapTexture(derotateX(p2X, 1)), mapTexture(derotateY(p2Y, 1)),   6.0f, 3.0f,   0.0f, 0.0f, 1.0f,
+
+
+    //2
+    
+};
+
+
 void getNorm(float* verts, int steps, int vertexCount) {
     // int vertexCount = sizeof(verts) / (13 * sizeof(float));
     // int vertexCount = sizeof(verts) / (steps * sizeof(float));
@@ -864,14 +891,18 @@ GLuint vbo3;        // square
 GLuint vao4;        // candle/cylinder
 GLuint vbo4;        // candle/cylinder
 
-// GLuint vao5;        // plate
-// GLuint vbo5;        // plate
+GLuint vao5;        // plate
+GLuint vbo5;        // plate
+
+GLuint vao6;        // square2
+GLuint vbo6;        // square2
 
 GLuint shader;      // combined vertex and fragment shader
 GLuint texture;     // texture ID
 GLuint texture2;
 GLuint cake_txt_inner;
 GLuint cake_txt_outer;
+GLuint lettuce;
 
 // called by the main function to do initial setup, such as uploading vertex
 // arrays, shader programs, etc.; returns true if successful, false otherwise
@@ -928,7 +959,7 @@ bool setup()
     glBindVertexArray(vao2);
 
     getNorm(cake, 13, sizeof(cake) / (13 * sizeof(float)));
-    smoothNorm(cake, 0, 71, 13);
+    // smoothNorm(cake, 0, 71, 13);
 
     // cout << "size: " << sizeof(vertices2)/sizeof(vertices2[0]) << endl;
 
@@ -1030,6 +1061,78 @@ bool setup()
     glEnableVertexAttribArray(4);
 
 
+    // FOR VERTEX ARRAY 5 (PLATE)
+    // generate the VAO and VBO objects and store their IDs in vao and vbo, respectively
+    glGenVertexArrays(1, &vao5);
+    glGenBuffers(1, &vbo5);
+
+    // bind the newly-created VAO to make it the current one that OpenGL will apply state changes to
+    glBindVertexArray(vao5);
+
+    getNorm(plate, 13, sizeof(plate) / (13 * sizeof(float)));
+    // smoothNorm(cylinder, 0, 143, 13);
+
+    // upload our vertex array data to the newly-created VBO
+    glBindBuffer(GL_ARRAY_BUFFER, vbo5);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(plate), plate, GL_STATIC_DRAW);
+
+    // on the VAO, register the current VBO with the following vertex attribute layout:
+    // - layout location 0...
+    // - ... shall consist of 3 GL_FLOATs (corresponding to x, y, and z coordinates)
+    // - ... its values will NOT be normalized (GL_FALSE)
+    // - ... the stride length is the number of bytes of all 3 floats of each vertex (hence, 3 * sizeof(float))
+    // - ... and we start at the beginning of the array (hence, (void*) 0)
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) 0); // position
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) (3 * sizeof(float))); // color
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) (6 * sizeof(float))); // texture
+    glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) (8 * sizeof(float))); // texture
+    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) (10 * sizeof(float))); // normal
+
+    // enable the newly-created layout location 0;
+    // this shall be used by our vertex shader to read the vertex's x, y, and z
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
+    glEnableVertexAttribArray(3);
+    glEnableVertexAttribArray(4);
+
+
+    // FOR VERTEX ARRAY 6 (SQUARE 2)
+    // generate the VAO and VBO objects and store their IDs in vao and vbo, respectively
+    glGenVertexArrays(1, &vao6);
+    glGenBuffers(1, &vbo6);
+
+    // bind the newly-created VAO to make it the current one that OpenGL will apply state changes to
+    glBindVertexArray(vao6);
+
+    getNorm(square2, 13, sizeof(square2) / (13 * sizeof(float)));
+    // smoothNorm(cylinder, 0, 143, 13);
+
+    // upload our vertex array data to the newly-created VBO
+    glBindBuffer(GL_ARRAY_BUFFER, vbo6);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(square2), square2, GL_STATIC_DRAW);
+
+    // on the VAO, register the current VBO with the following vertex attribute layout:
+    // - layout location 0...
+    // - ... shall consist of 3 GL_FLOATs (corresponding to x, y, and z coordinates)
+    // - ... its values will NOT be normalized (GL_FALSE)
+    // - ... the stride length is the number of bytes of all 3 floats of each vertex (hence, 3 * sizeof(float))
+    // - ... and we start at the beginning of the array (hence, (void*) 0)
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) 0); // position
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) (3 * sizeof(float))); // color
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) (6 * sizeof(float))); // texture
+    glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) (8 * sizeof(float))); // texture
+    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 13 * sizeof(float), (void*) (10 * sizeof(float))); // normal
+
+    // enable the newly-created layout location 0;
+    // this shall be used by our vertex shader to read the vertex's x, y, and z
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(2);
+    glEnableVertexAttribArray(3);
+    glEnableVertexAttribArray(4);
+
+
     // load our shader program
     shader = gdevLoadShader("finals.vs", "finals.fs");
     if (! shader)
@@ -1039,11 +1142,13 @@ bool setup()
     texture2 = gdevLoadTexture("crust.png", GL_REPEAT, true, true);
     cake_txt_inner = gdevLoadTexture("cake-inner.png", GL_REPEAT, true, true);
     cake_txt_outer = gdevLoadTexture("cake-outer.png", GL_REPEAT, true, true);
+    lettuce = gdevLoadTexture("lettuce.png", GL_REPEAT, true, true);
 
     if (!texture) return false;
     if (!texture2) return false;
     if (!cake_txt_inner) return false;
     if (!cake_txt_outer) return false;
+    if (!lettuce) return false;
 
     //gdevLoadTexture is defined in gdev.h, and its parameters are:
     // - the texture filename
@@ -1101,28 +1206,62 @@ void render()
     glBindTexture(GL_TEXTURE_2D, cake_txt_inner);
     glActiveTexture(GL_TEXTURE3);
     glBindTexture(GL_TEXTURE_2D, cake_txt_outer);
+    glActiveTexture(GL_TEXTURE4);
+    glBindTexture(GL_TEXTURE_2D, lettuce);
 
     glUniform1i(glGetUniformLocation(shader, "shaderTextureA"), 0);
     glUniform1i(glGetUniformLocation(shader, "shaderTextureB"), 1);
     glUniform1i(glGetUniformLocation(shader, "cake_txt_inner"), 2);
     glUniform1i(glGetUniformLocation(shader, "cake_txt_outer"), 3);
+    glUniform1i(glGetUniformLocation(shader, "lettuce_txt"), 4);
 
     // ... draw our triangles
     glBindVertexArray(vao);    
     
-    // multiply bread
-    // first (center)
+    // draw bread
+    // bottom bread
     glm::mat4 modelMatrix = glm::mat4(1.0f);
-    modelMatrix = glm::rotate(modelMatrix, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f)); // you spin me right round baby..
+    modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, -0.42f, 0.0f));
+    modelMatrix = glm::rotate(modelMatrix, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)); // you spin me right round baby..
+    modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0, 1.0f, 0.05f));
     glUniformMatrix4fv(glGetUniformLocation(shader, "modelMatrix"), 1, GL_FALSE, glm::value_ptr(modelMatrix)); // call after every draw arrays
 
     // normal matrix
     glm::mat4 normalMatrix;
     normalMatrix = glm::transpose(glm::inverse(modelMatrix));
     glUniformMatrix4fv(glGetUniformLocation(shader, "normalMatrix"), 1, GL_FALSE, glm::value_ptr(normalMatrix)); // call after every draw arrays
+    glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / (6 * sizeof(float)));
 
+
+    // top bread
+    modelMatrix = glm::mat4(1.0f);
+    modelMatrix = glm::translate(modelMatrix, glm::vec3(-0.2f, -0.30f, 0.0f));
+    modelMatrix = glm::rotate(modelMatrix, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)); // you spin me right round baby..
+    modelMatrix = glm::scale(modelMatrix, glm::vec3(1.0, 1.0f, 0.05f));
+    glUniformMatrix4fv(glGetUniformLocation(shader, "modelMatrix"), 1, GL_FALSE, glm::value_ptr(modelMatrix)); // call after every draw arrays
+
+    // normal matrix
+    normalMatrix = glm::transpose(glm::inverse(modelMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(shader, "normalMatrix"), 1, GL_FALSE, glm::value_ptr(normalMatrix)); // call after every draw arrays
     glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / (6 * sizeof(float)));
     
+
+    // draw lettuce
+    glBindVertexArray(vao3);
+    modelMatrix = glm::mat4(1.0f);
+    modelMatrix = glm::rotate(modelMatrix, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f)); 
+    modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.0f, -0.35f));
+    // modelMatrix = glm::rotate(modelMatrix, glm::radians(30.0f), glm::vec3(1.0f, 0.0f, 0.0f)); 
+    // modelMatrix = glm::rotate(modelMatrix, glm::radians(abs(t)*50), glm::vec3(0.0f, 1.0f, 0.0f)); // for debugging
+    // modelMatrix = glm::scale(modelMatrix, glm::vec3(1.2f, 1.2f, 1.0f));
+    glUniformMatrix4fv(glGetUniformLocation(shader, "modelMatrix"), 1, GL_FALSE, glm::value_ptr(modelMatrix)); // call after every draw arrays
+
+    // normal matrix
+    normalMatrix = glm::transpose(glm::inverse(modelMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(shader, "normalMatrix"), 1, GL_FALSE, glm::value_ptr(normalMatrix)); // call after every draw arrays
+
+    glDrawArrays(GL_TRIANGLES, 0, sizeof(square) / (6 * sizeof(float)));
+
 
     // draw cake
     glBindVertexArray(vao2);
@@ -1171,6 +1310,39 @@ void render()
     glUniformMatrix4fv(glGetUniformLocation(shader, "normalMatrix"), 1, GL_FALSE, glm::value_ptr(normalMatrix)); // call after every draw arrays
 
     glDrawArrays(GL_TRIANGLES, 0, sizeof(cylinder) / (6 * sizeof(float)));
+
+
+    // draw light 
+    glBindVertexArray(vao6);
+    modelMatrix = glm::mat4(1.0f);
+    modelMatrix = glm::translate(modelMatrix, glm::vec3(1.0f, 0.80f, 0.0f)); // move candle to the bread's right side
+    modelMatrix = glm::rotate(modelMatrix, glm::radians(45.0f), glm::vec3(0.0f, 0.0f, 1.0f)); 
+    // modelMatrix = glm::rotate(modelMatrix, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f)); 
+    // modelMatrix = glm::rotate(modelMatrix, glm::radians(abs(t)*50), glm::vec3(1.0f, 0.0f, 0.0f)); // for debugging
+    modelMatrix = glm::scale(modelMatrix, glm::vec3(0.15f, 0.15f, 1.0f));
+    glUniformMatrix4fv(glGetUniformLocation(shader, "modelMatrix"), 1, GL_FALSE, glm::value_ptr(modelMatrix)); // call after every draw arrays
+
+    // normal matrix
+    normalMatrix = glm::transpose(glm::inverse(modelMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(shader, "normalMatrix"), 1, GL_FALSE, glm::value_ptr(normalMatrix)); // call after every draw arrays
+
+    glDrawArrays(GL_TRIANGLES, 0, sizeof(square2) / (6 * sizeof(float)));
+
+        
+    // // draw plate
+    // glBindVertexArray(vao5);
+    // modelMatrix = glm::mat4(1.0f);
+    // modelMatrix = glm::rotate(modelMatrix, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    // modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 2.0f, 0.0f)); // move cake to the loaf's right side
+    // // modelMatrix = glm::rotate(modelMatrix, glm::radians(30.0f), glm::vec3(1.0f, 0.0f, 0.0f)); 
+    // // modelMatrix = glm::rotate(modelMatrix, glm::radians(abs(t)*50), glm::vec3(0.0f, 1.0f, 0.0f)); // for debugging
+    // glUniformMatrix4fv(glGetUniformLocation(shader, "modelMatrix"), 1, GL_FALSE, glm::value_ptr(modelMatrix)); // call after every draw arrays
+
+    // // normal matrix
+    // normalMatrix = glm::transpose(glm::inverse(modelMatrix));
+    // glUniformMatrix4fv(glGetUniformLocation(shader, "normalMatrix"), 1, GL_FALSE, glm::value_ptr(normalMatrix)); // call after every draw arrays
+
+    // glDrawArrays(GL_TRIANGLES, 0, sizeof(plate) / (6 * sizeof(float)));
 
 
     // // second (left)
@@ -1249,7 +1421,8 @@ void handleKeys(GLFWwindow* pWindow, int key, int scancode, int action, int mode
     }
     if (glfwGetKey(pWindow, GLFW_KEY_E) == GLFW_PRESS)
         specularity += specularChange;
-
+    
+    printf("light pos: (%f, %f, %f)\n", lightPosition.x, lightPosition.y, lightPosition.z);
     // cout << "specularity: " << specularity << endl;
 }
 

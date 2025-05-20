@@ -24,6 +24,7 @@ uniform sampler2D shaderTextureA;
 uniform sampler2D shaderTextureB;
 uniform sampler2D cake_txt_inner;
 uniform sampler2D cake_txt_outer;
+uniform sampler2D lettuce_txt;
 
 // camera
 uniform vec3 cameraPos;
@@ -35,6 +36,7 @@ vec4 colorB = texture(shaderTextureB, shaderTexCoord);
 
 vec4 cake_inner = texture(cake_txt_inner, shaderTexCoord);
 vec4 cake_outer = texture(cake_txt_outer, shaderTexCoord);
+vec4 lettuce = texture(lettuce_txt, shaderTexCoord);
 
 uniform float t; // time
 // vec3 lightPosition = vec3(clamp(abs(sin(t)), 0, 1) * 50, 7.0f, 7.0f);
@@ -94,6 +96,11 @@ void main()
     if(shaderSide.x == 5) {
         fragmentColor = vec4(result, 1.0f) * cake_outer;
     } 
+    if(shaderSide.x == 7) {
+        if (lettuce.a < 0.7)
+            discard;
+        fragmentColor = vec4(result, 1.0f) * lettuce;
+    }
     // fragmentColor = vec4(result, 0.1f);
 }
 
